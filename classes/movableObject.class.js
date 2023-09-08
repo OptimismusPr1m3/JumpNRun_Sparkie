@@ -1,9 +1,16 @@
-class MovableObject{
-    positionX = 500;
-    positionY = 140;
+class MovableObject {
+    positionX = 10;
+    positionY = 80;
+    height = 50;
+    width = 70;
     img;
 
-    moveRight(){
+    loadImage(path) {
+        this.img = new Image();
+        this.img.src = path
+    }
+
+    moveRight() {
         console.log('Character is moving');
     }
 }
