@@ -6,6 +6,13 @@ class World {
         new PufferFish(120, 30),
         new PufferFish(200, 30)
     ]
+    lights = [
+        new Light()
+    ]
+    floors = [
+        new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 200, 100, 0, 50),
+        new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 200, 100, 200, 50)
+    ]
     canvas;
     ctx;
 
@@ -17,13 +24,28 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.drawImage(this.character.img, this.character.positionX, this.character.positionY, this.character.width, this.character.height)
-        this.enemies.forEach(enemy => {
-            this.ctx.drawImage(enemy.img, enemy.positionX, enemy.positionY, enemy.width, enemy.height)
-        });
+
+        this.addToMap(this.character)
+        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.lights);
+        this.addObjectsToMap(this.floors);
+
+
+        //Draw() wird immer aufgerufen
         let self = this;
-        requestAnimationFrame(function (){
+        requestAnimationFrame(function () {
             self.draw();
         });
     };
+
+    addObjectsToMap(objects){
+        objects.forEach(object => {
+            this.addToMap(object)
+        });
+    }
+    
+    addToMap(mo) {
+        this.ctx.drawImage(mo.img, mo.positionX, mo.positionY, mo.width, mo.height)
+
+    }
 }
