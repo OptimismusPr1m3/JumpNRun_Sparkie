@@ -10,6 +10,12 @@ class World {
         new Light()
     ]
     floors = [
+        new Floor('sprites/3. Background/Layers/5. Water/D2.png', 360, 480, 360, 0),
+        new Floor('sprites/3. Background/Layers/5. Water/D1.png', 360, 480, 0, 0),
+        new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 200, 100, 200, 50),
+        new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 200, 100, 0, 50),
+        new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 200, 100, 200, 50),
+        new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 200, 100, 0, 50),
         new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 200, 100, 0, 50),
         new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 200, 100, 200, 50)
     ]
