@@ -10,14 +10,24 @@ class World {
         new Light()
     ]
     floors = [
+        /*
         new Floor('sprites/3. Background/Layers/5. Water/D2.png', 360, 480, 360, 0),
         new Floor('sprites/3. Background/Layers/5. Water/D1.png', 360, 480, 0, 0),
-        new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 200, 100, 200, 50),
-        new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 200, 100, 0, 50),
-        new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 200, 100, 200, 50),
-        new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 200, 100, 0, 50),
-        new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 200, 100, 0, 50),
-        new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 200, 100, 200, 50)
+        new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 360, 300, 360, 180),
+        new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 360, 300, 0, 180),
+        new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 360, 300, 360, 180),
+        new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 360, 300, 0, 180),
+        new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 360, 300, 0, 180),
+        new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 360, 300, 360, 180)
+        */
+        new Floor('sprites/3. Background/Layers/5. Water/D2.png',540),
+        new Floor('sprites/3. Background/Layers/5. Water/D1.png',0),
+        new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png',540),
+        new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png',0),
+        new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png',540),
+        new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png',0),
+        new Floor('sprites/3. Background/Layers/2. Floor/D1.png',0),
+        new Floor('sprites/3. Background/Layers/2. Floor/D2.png',540)
     ]
     canvas;
     ctx;
@@ -31,9 +41,8 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
-        
-        this.addObjectsToMap(this.lights);
         this.addObjectsToMap(this.floors);
+        this.addObjectsToMap(this.lights);
         this.addToMap(this.character)
         this.addObjectsToMap(this.enemies);
 
