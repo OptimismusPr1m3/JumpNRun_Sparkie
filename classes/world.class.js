@@ -25,10 +25,11 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
-        this.addToMap(this.character)
-        this.addObjectsToMap(this.enemies);
+        
         this.addObjectsToMap(this.lights);
         this.addObjectsToMap(this.floors);
+        this.addToMap(this.character)
+        this.addObjectsToMap(this.enemies);
 
 
         //Draw() wird immer aufgerufen
