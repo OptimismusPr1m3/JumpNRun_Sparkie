@@ -28,26 +28,52 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/3.Swim/5.png',
         'sprites/1.Sharkie/3.Swim/6.png',
     ]
+    IMAGES_ATTACKING = [
+        'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png'
+    ]
     world;
     movementSpeed = 7;
     constructor() {
         super().loadImage('sprites/1.Sharkie/1.IDLE/1.png')
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SWIMMING);
+        this.loadImages(this.IMAGES_ATTACKING);
         this.animate();
     }
 
     animate() {
+        // moving x position
         setInterval(() => {
             if (this.world.keyboard.RIGHT) {
-                this.moveRight();
-            } else if (this.world.keyboard.LEFT){
+                this.positionX += this.movementSpeed;
+            } else if(this.world.keyboard.LEFT){
+                this.otherDirection = true;
+                this.positionX -= this.movementSpeed;
+            }
+            this.world.camera_x = -this.positionX;
+        }, 1000 / 60);
+        //animation Intervall
+        setInterval(() => {
+            if (this.world.keyboard.LEFT) {
+                //swim Animation
                 this.moveLeft();
-            }else{
+            } else if (this.world.keyboard.RIGHT) {
+                this.moveRight();
+            }
+        }, 50);
+        //idling Intervall
+        setInterval(() => {
+            if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT) {
                 this.idling();
             }
-        }, 100)
-
+        }, 100);
     }
 
     moveRight() {
@@ -55,23 +81,32 @@ class Character extends MovableObject {
         let path = this.IMAGES_SWIMMING[i];
         this.img = this.imageCache[path];
         this.currentImage++;
-        this.positionX += this.movementSpeed;
+        this.otherDirection = false;
     }
 
-    moveLeft(){
+    moveLeft() {
         let i = this.currentImage % this.IMAGES_SWIMMING.length;
         let path = this.IMAGES_SWIMMING[i];
         this.img = this.imageCache[path];
         this.currentImage++;
-        this.positionX -= this.movementSpeed;
+        this.otherDirection = true;
     }
 
-    idling(){
+    idling() {
         let i = this.currentImage % this.IMAGES_IDLE.length;
         let path = this.IMAGES_IDLE[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+
     }
+    attacking() {
+        let i = this.currentImage % this.IMAGES_ATTACKING.length;
+        let path = this.IMAGES_ATTACKING[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+
+    }
+
 
     jump() {
 
