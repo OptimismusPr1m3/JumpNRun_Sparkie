@@ -1,40 +1,7 @@
 
 class World {
     character = new Character();
-    enemies = [
-        new PufferFish(50, 30),
-        new PufferFish(120, 30),
-        new PufferFish(200, 30)
-    ]
-    lights = [
-        new Light()
-    ]
-    floors = [
-        // fourth layer
-        new Floor('sprites/3. Background/Layers/5. Water/D2.png', 540),
-        new Floor('sprites/3. Background/Layers/5. Water/D1.png', 0),
-        // second floor of fourth layer if char moves to right
-        new Floor('sprites/3. Background/Layers/5. Water/D2.png', 1620),
-        new Floor('sprites/3. Background/Layers/5. Water/D1.png', 1080),
-        // third layer
-        new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 540),
-        new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 0),
-        // second floor of third layer if char moves to right
-        new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 1620),
-        new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 1080),
-        // second layer
-        new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 540),
-        new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 0),
-        // second floor of second layer if char moves to right
-        new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 1620),
-        new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 1080),
-        // first layer
-        new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 0),
-        new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 540),
-        //second floor of first layer if char moves to right
-        new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 1080),
-        new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 1620)
-    ]
+    level = level1;
     canvas;
     ctx;
     keyboard;
@@ -54,10 +21,11 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.ctx.translate(this.camera_x, 0)
-        this.addObjectsToMap(this.floors);
-        this.addObjectsToMap(this.lights);
+        this.addObjectsToMap(this.level.floors);
+        this.addObjectsToMap(this.level.lights);
         this.addToMap(this.character)
-        this.addObjectsToMap(this.enemies);
+
+        this.addObjectsToMap(this.level.enemies);
         this.ctx.translate(-this.camera_x, 0)
 
         //Draw() wird immer aufgerufen
