@@ -40,65 +40,47 @@ class Character extends MovableObject {
     ]
     world;
     movementSpeed = 7;
+
     constructor() {
         super().loadImage('sprites/1.Sharkie/1.IDLE/1.png')
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SWIMMING);
         this.loadImages(this.IMAGES_ATTACKING);
         this.animate();
+        this.swimming_sound = new Audio('audio/swimming.mp3');
     }
 
     animate() {
         // moving x position
         setInterval(() => {
+            this.swimming_sound.pause();
             if (this.world.keyboard.RIGHT && this.positionX < this.world.level.level_end_x) {
                 this.positionX += this.movementSpeed;
-            } else if(this.world.keyboard.LEFT && this.positionX > 0){
+                this.otherDirection = false;
+                this.swimming_sound.play();
+            } else if (this.world.keyboard.LEFT && this.positionX > 0) {
                 this.otherDirection = true;
                 this.positionX -= this.movementSpeed;
+                this.otherDirection = true;
+                this.swimming_sound.play();
             }
             this.world.camera_x = -this.positionX;
         }, 1000 / 60);
         //animation Intervall
         setInterval(() => {
-            if (this.world.keyboard.LEFT) {
+            if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT) {
                 //swim Animation
-                this.moveLeft();
-            } else if (this.world.keyboard.RIGHT) {
-                this.moveRight();
+                this.playAnimation(this.IMAGES_SWIMMING);
             }
-        }, 50);
+        }, 60);
         //idling Intervall
         setInterval(() => {
             if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT) {
-                this.idling();
+                this.playAnimation(this.IMAGES_IDLE);
             }
         }, 100);
     }
 
-    moveRight() {
-        let i = this.currentImage % this.IMAGES_SWIMMING.length;
-        let path = this.IMAGES_SWIMMING[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
-        this.otherDirection = false;
-    }
-
-    moveLeft() {
-        let i = this.currentImage % this.IMAGES_SWIMMING.length;
-        let path = this.IMAGES_SWIMMING[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
-        this.otherDirection = true;
-    }
-
-    idling() {
-        let i = this.currentImage % this.IMAGES_IDLE.length;
-        let path = this.IMAGES_IDLE[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
-
-    }
     attacking() {
         let i = this.currentImage % this.IMAGES_ATTACKING.length;
         let path = this.IMAGES_ATTACKING[i];

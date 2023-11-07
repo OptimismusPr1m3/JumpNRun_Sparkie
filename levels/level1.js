@@ -1,7 +1,8 @@
 const level1 = new Level([
-    new PufferFish(50, 30),
-    new PufferFish(120, 30),
-    new PufferFish(200, 30)
+    new PufferFish(),
+    new PufferFish(),
+    new PufferFish(),
+    new Endboss()
 ],
 [
     new Light()

@@ -11,20 +11,19 @@ class PufferFish extends MovableObject{
         'sprites/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png'
     ]
     constructor(){
-        super().loadImage('sprites/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png')
+        super().loadImage(this.IMAGES_WALKING[0])
         this.positionX = 350 + Math.random() * 800;
         this.loadImages(this.IMAGES_WALKING);
         this.animate();
         this.speed = 0.15 + Math.random() * 0.4;
+        this.swimming_sound = new Audio('audio/p_fish_swimming.mp3');
     }
 
     animate(){
         this.moveLeft();
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_WALKING)
+            this.swimming_sound.play();
         }, 100);
     }
 
