@@ -26,6 +26,4 @@ class PufferFish extends MovableObject{
             this.swimming_sound.play();
         }, 100);
     }
-
-
 }

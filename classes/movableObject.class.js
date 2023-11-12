@@ -1,6 +1,5 @@
 class MovableObject {
     positionX = 0;
-    positionY = 390;
     height = 250;
     width = 250;
     isAlive = true;
@@ -10,6 +9,24 @@ class MovableObject {
     speed = 0.15;
     otherDIrection = false;
     swimming_sound;
+    speedY = 0;
+    acceleration = 0.6;
+    isJumping;
+    applyGravity(){
+        setInterval(() => {
+            if (this.isAboveGround() || this.speedY > 0) {
+            this.positionY -= this.speedY;
+            this.speedY -= this.acceleration;
+            this.isJumping = true;
+            }else {
+                this.isJumping = false;
+            }
+        }, 1000 / 25)
+    }
+
+    isAboveGround(){
+        return this.positionY < 390;
+    }
 
     loadImage(path) {
         this.img = new Image();

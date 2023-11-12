@@ -1,5 +1,6 @@
 
 class Character extends MovableObject {
+    positionY = 390; //390 vorher
     IMAGES_IDLE = [
         'sprites/1.Sharkie/1.IDLE/1.png',
         'sprites/1.Sharkie/1.IDLE/2.png',
@@ -38,6 +39,12 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
         'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png'
     ]
+    IMAGES_SWIM_UP = [
+        'sprites/1.Sharkie/3.Swim/2.png',
+        'sprites/1.Sharkie/3.Swim/3.png',
+        'sprites/1.Sharkie/3.Swim/5.png',
+        'sprites/1.Sharkie/3.Swim/6.png',
+    ]
     world;
     movementSpeed = 7;
 
@@ -46,7 +53,9 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SWIMMING);
         this.loadImages(this.IMAGES_ATTACKING);
+        this.loadImages(this.IMAGES_SWIM_UP);
         this.animate();
+        this.applyGravity();
         this.swimming_sound = new Audio('audio/swimming.mp3');
     }
 
@@ -64,13 +73,21 @@ class Character extends MovableObject {
                 this.otherDirection = true;
                 this.swimming_sound.play();
             }
+            console.log(this.speedY)
+            if (this.world.keyboard.SPACE && !this.isJumping) {
+                this.speedY = 15;
+            }
             this.world.camera_x = -this.positionX;
         }, 1000 / 60);
         //animation Intervall
         setInterval(() => {
-            if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT) {
-                //swim Animation
-                this.playAnimation(this.IMAGES_SWIMMING);
+            if (this.positionY < 390) {
+                this.playAnimation(this.IMAGES_SWIM_UP);
+            }else {
+                if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT) {
+                    //swim Animation
+                    this.playAnimation(this.IMAGES_SWIMMING);
+                }
             }
         }, 60);
         //idling Intervall
@@ -89,8 +106,9 @@ class Character extends MovableObject {
 
     }
 
-
-    jump() {
-
+    swimUp() {
+        if (this.world.keyboard.SPACE) {
+            this.playAnimation(this.IMAGES_SWIM_UP);
+        }
     }
 }
