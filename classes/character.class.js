@@ -46,10 +46,10 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/3.Swim/6.png',
     ]
     world;
-    movementSpeed = 7;
 
     constructor() {
         super().loadImage('sprites/1.Sharkie/1.IDLE/1.png')
+        this.speed = 7;
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SWIMMING);
         this.loadImages(this.IMAGES_ATTACKING);
@@ -64,18 +64,17 @@ class Character extends MovableObject {
         setInterval(() => {
             this.swimming_sound.pause();
             if (this.world.keyboard.RIGHT && this.positionX < this.world.level.level_end_x) {
-                this.positionX += this.movementSpeed;
                 this.otherDirection = false;
+                this.moveRight();
                 this.swimming_sound.play();
             } else if (this.world.keyboard.LEFT && this.positionX > 0) {
                 this.otherDirection = true;
-                this.positionX -= this.movementSpeed;
-                this.otherDirection = true;
+                this.moveLeft();
                 this.swimming_sound.play();
             }
             console.log(this.speedY)
             if (this.world.keyboard.SPACE && !this.isJumping) {
-                this.speedY = 15;
+                this.jump();
             }
             this.world.camera_x = -this.positionX;
         }, 1000 / 60);

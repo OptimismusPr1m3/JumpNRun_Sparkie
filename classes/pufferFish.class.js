@@ -1,6 +1,6 @@
 
 class PufferFish extends MovableObject{
-    height = 60;
+    height = 70;
     width = 60;
     positionY = 550;
     IMAGES_WALKING = [
@@ -20,7 +20,9 @@ class PufferFish extends MovableObject{
     }
 
     animate(){
-        this.moveLeft();
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 60); // 1000 / 25 = 25 FPS , 1000 / 60 = 60 FPS !
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING)
             this.swimming_sound.play();
