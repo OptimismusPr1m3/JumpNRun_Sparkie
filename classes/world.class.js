@@ -43,16 +43,23 @@ class World {
 
     addToMap(mo) {
         if (mo.otherDirection) {
-            this.ctx.save();
-            this.ctx.translate(mo.width, 0);
-            this.ctx.scale(-1, 1);
-            mo.positionX = mo.positionX * -1
-            
+            this.flipImage(mo);
         }
-        this.ctx.drawImage(mo.img, mo.positionX, mo.positionY, mo.width, mo.height);
+        mo.draw(this.ctx)
+        mo.showHitbox(this.ctx)
         if (mo.otherDirection) {
-            mo.positionX = mo.positionX * -1;
-            this.ctx.restore();
+           this.flipImageBack(mo);
         }
     }
+    flipImage(moveableObject){
+        this.ctx.save();
+        this.ctx.translate(moveableObject.width, 0);
+        this.ctx.scale(-1, 1);
+        moveableObject.positionX = moveableObject.positionX * -1
+    }
+    flipImageBack(moveableObject){
+        moveableObject.positionX = moveableObject.positionX * -1;
+        this.ctx.restore();
+    }
 }
+

@@ -32,6 +32,17 @@ class MovableObject {
         this.img = new Image();
         this.img.src = path
     }
+    draw(ctx){
+        ctx.drawImage(this.img, this.positionX, this.positionY, this.width, this.height);
+    }
+    
+    showHitbox(ctx){
+        ctx.beginPath();
+        ctx.lineWidth = '5';
+        ctx.strokeStyle = 'blue';
+        ctx.rect(this.positionX, this.positionY, this.width, this.height);
+        ctx.stroke();
+    }
     loadImages(array) {
         array.forEach((path) => {
             let img = new Image();
