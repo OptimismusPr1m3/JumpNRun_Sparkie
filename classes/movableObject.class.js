@@ -1,5 +1,6 @@
 class MovableObject {
     positionX = 0;
+    hp;
     height = 250;
     width = 250;
     isAlive = true;
@@ -32,16 +33,26 @@ class MovableObject {
         this.img = new Image();
         this.img.src = path
     }
-    draw(ctx){
+    draw(ctx) {
         ctx.drawImage(this.img, this.positionX, this.positionY, this.width, this.height);
     }
-    
-    showHitbox(ctx){
-        ctx.beginPath();
-        ctx.lineWidth = '5';
-        ctx.strokeStyle = 'blue';
-        ctx.rect(this.positionX, this.positionY, this.width, this.height);
-        ctx.stroke();
+
+    showHitbox(ctx) {
+        if (this instanceof Character || this instanceof PufferFish) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.positionX, this.positionY, this.width, this.height);
+            ctx.stroke();
+        }
+    }
+
+    //character.isColliding(chicken);
+    isColliding(moveableObject){
+        return this.positionX + this.width > moveableObject.positionX &&
+            this.positionY + this.height > moveableObject.positionY &&
+            this.positionX < moveableObject.positionX &&
+            this.positionY < moveableObject.positionY + moveableObject.height;
     }
     loadImages(array) {
         array.forEach((path) => {

@@ -1,6 +1,7 @@
 
 class Character extends MovableObject {
     positionY = 390; //390 vorher
+    hp = 400;
     IMAGES_IDLE = [
         'sprites/1.Sharkie/1.IDLE/1.png',
         'sprites/1.Sharkie/1.IDLE/2.png',
