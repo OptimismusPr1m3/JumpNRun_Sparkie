@@ -24,7 +24,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     console.log('Collision with character:', enemy)
-                    this.character.hp -= 50;
+                    this.character.hp -= 20;
                     console.log("Leben des Characters:", this.character.hp)
                 };
             });

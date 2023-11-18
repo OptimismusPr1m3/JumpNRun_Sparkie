@@ -1,7 +1,7 @@
 
 class Character extends MovableObject {
     positionY = 390; //390 vorher
-    hp = 400;
+    hp = 100;
     IMAGES_IDLE = [
         'sprites/1.Sharkie/1.IDLE/1.png',
         'sprites/1.Sharkie/1.IDLE/2.png',
@@ -46,6 +46,13 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/3.Swim/5.png',
         'sprites/1.Sharkie/3.Swim/6.png',
     ]
+    IMAGES_HURT = [
+        'sprites/1.Sharkie/5.Hurt/1.Poisoned/1.png',
+        'sprites/1.Sharkie/5.Hurt/1.Poisoned/2.png',
+        'sprites/1.Sharkie/5.Hurt/1.Poisoned/3.png',
+        'sprites/1.Sharkie/5.Hurt/1.Poisoned/4.png',
+        'sprites/1.Sharkie/5.Hurt/1.Poisoned/5.png',
+    ]
     world;
 
     constructor() {
@@ -55,6 +62,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_SWIMMING);
         this.loadImages(this.IMAGES_ATTACKING);
         this.loadImages(this.IMAGES_SWIM_UP);
+        this.loadImages(this.IMAGES_HURT);
         this.animate();
         this.applyGravity();
         this.swimming_sound = new Audio('audio/swimming.mp3');
@@ -73,7 +81,6 @@ class Character extends MovableObject {
                 this.moveLeft();
                 this.swimming_sound.play();
             }
-            console.log(this.speedY)
             if (this.world.keyboard.SPACE && !this.isJumping) {
                 this.jump();
             }
@@ -98,17 +105,11 @@ class Character extends MovableObject {
         }, 100);
     }
 
-    attacking() {
+    /*attacking() {
         let i = this.currentImage % this.IMAGES_ATTACKING.length;
         let path = this.IMAGES_ATTACKING[i];
         this.img = this.imageCache[path];
         this.currentImage++;
 
-    }
-
-    swimUp() {
-        if (this.world.keyboard.SPACE) {
-            this.playAnimation(this.IMAGES_SWIM_UP);
-        }
-    }
+    }*/
 }
