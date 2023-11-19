@@ -1,13 +1,6 @@
-class MovableObject {
-    positionX = 0;
+class MovableObject extends DrawableObject {
     hp;
-    height = 250;
-    width = 250;
     isAlive = true;
-    img;
-    imageCache = [];
-    currentImage = 0;
-    speed = 0.15;
     otherDIrection = false;
     swimming_sound;
     speedY = 0;
@@ -29,25 +22,7 @@ class MovableObject {
     isAboveGround() {
         return this.positionY < 390;
     }
-
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path
-    }
-    draw(ctx) {
-        ctx.drawImage(this.img, this.positionX, this.positionY, this.width, this.height);
-    }
-
-    showHitbox(ctx) {
-        if (this instanceof Character || this instanceof PufferFish) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.positionX, this.positionY, this.width, this.height);
-            ctx.stroke();
-        }
-    }
-
+    
     //character.isColliding(chicken);
     isColliding(moveableObject) {
         return this.positionX + this.width > moveableObject.positionX &&
@@ -55,20 +30,7 @@ class MovableObject {
             this.positionX < moveableObject.positionX &&
             this.positionY < moveableObject.positionY + moveableObject.height;
     }
-    loadImages(array) {
-        array.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-    }
-    moveLeft() {
-        this.positionX -= this.speed;
-    }
 
-    moveRight() {
-        this.positionX += this.speed;
-    }
     playAnimation(imagesArray) {
         let i = this.currentImage % imagesArray.length;  // let i = / % 6; => 1, Rest 1
         let path = imagesArray[i];
@@ -83,7 +45,7 @@ class MovableObject {
     isHurt(){
         let timePassed = new Date().getTime() - this.lastHit; //Differenz in ms
         timePassed = timePassed / 1000 //Differenz in sekunden
-        console.log(timePassed)
+        //console.log(timePassed)
         return timePassed < 0.7 ;
     }
 
