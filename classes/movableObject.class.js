@@ -13,6 +13,7 @@ class MovableObject {
     speedY = 0;
     acceleration = 0.6;
     isJumping;
+    lastHit = 0;
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -48,7 +49,7 @@ class MovableObject {
     }
 
     //character.isColliding(chicken);
-    isColliding(moveableObject){
+    isColliding(moveableObject) {
         return this.positionX + this.width > moveableObject.positionX &&
             this.positionY + this.height > moveableObject.positionY &&
             this.positionX < moveableObject.positionX &&
@@ -77,6 +78,27 @@ class MovableObject {
 
     jump() {
         this.speedY = 15;
+    }
+
+    isHurt(){
+        let timePassed = new Date().getTime() - this.lastHit; //Differenz in ms
+        timePassed = timePassed / 1000 //Differenz in sekunden
+        console.log(timePassed)
+        return timePassed < 0.7 ;
+    }
+
+    hit() {
+        this.hp -= 20;
+        if (this.hp < 0) {
+            this.hp = 0;
+        }else {
+            this.lastHit = new Date().getTime();
+        }
+
+    }
+
+    isDead() {
+        return this.hp == 0;
     }
 }
 

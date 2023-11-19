@@ -46,6 +46,20 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/3.Swim/5.png',
         'sprites/1.Sharkie/3.Swim/6.png',
     ]
+    IMAGES_DEAD = [
+        'sprites/1.Sharkie/6.dead/1.Poisoned/1.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/2.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/3.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/4.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/5.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/6.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/7.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/8.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/9.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/10.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/11.png',
+        'sprites/1.Sharkie/6.dead/1.Poisoned/12.png'
+    ]
     IMAGES_HURT = [
         'sprites/1.Sharkie/5.Hurt/1.Poisoned/1.png',
         'sprites/1.Sharkie/5.Hurt/1.Poisoned/2.png',
@@ -60,9 +74,10 @@ class Character extends MovableObject {
         this.speed = 7;
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SWIMMING);
-        this.loadImages(this.IMAGES_ATTACKING);
+        //this.loadImages(this.IMAGES_ATTACKING);
         this.loadImages(this.IMAGES_SWIM_UP);
         this.loadImages(this.IMAGES_HURT);
+        this.loadImages(this.IMAGES_DEAD);
         this.animate();
         this.applyGravity();
         this.swimming_sound = new Audio('audio/swimming.mp3');
@@ -88,15 +103,17 @@ class Character extends MovableObject {
         }, 1000 / 60);
         //animation Intervall
         setInterval(() => {
-            if (this.positionY < 390) {
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD)
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT)
+            } else if (this.positionY < 390) {
                 this.playAnimation(this.IMAGES_SWIM_UP);
-            }else {
-                if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT) {
-                    //swim Animation
-                    this.playAnimation(this.IMAGES_SWIMMING);
-                }
-            }
-        }, 60);
+            } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT) {
+                //swim Animation
+                this.playAnimation(this.IMAGES_SWIMMING);
+            }  
+            },60);
         //idling Intervall
         setInterval(() => {
             if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT) {
