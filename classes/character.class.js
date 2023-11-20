@@ -67,6 +67,7 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/5.Hurt/1.Poisoned/4.png',
         'sprites/1.Sharkie/5.Hurt/1.Poisoned/5.png',
     ]
+    
     world;
 
     constructor() {

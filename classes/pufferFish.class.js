@@ -16,7 +16,7 @@ class PufferFish extends MovableObject{
         this.loadImages(this.IMAGES_WALKING);
         this.animate();
         this.speed = 0.15 + Math.random() * 0.4;
-        this.swimming_sound = new Audio('audio/p_fish_swimming.mp3');
+        //this.swimming_sound = new Audio('audio/p_fish_swimming.mp3');
     }
 
     animate(){
@@ -25,7 +25,7 @@ class PufferFish extends MovableObject{
         }, 1000 / 60); // 1000 / 25 = 25 FPS , 1000 / 60 = 60 FPS !
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING)
-            this.swimming_sound.play();
+            //this.swimming_sound.play();
         }, 100);
     }
 }

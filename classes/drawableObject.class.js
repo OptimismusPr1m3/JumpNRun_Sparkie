@@ -26,7 +26,7 @@ class DrawableObject{
     }
 
     showHitbox(ctx) {
-        if (this instanceof Character || this instanceof PufferFish || this instanceof ThrowableObject) {
+        if (this instanceof Character || this instanceof PufferFish || this instanceof ThrowableObject || this instanceof Potion) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';

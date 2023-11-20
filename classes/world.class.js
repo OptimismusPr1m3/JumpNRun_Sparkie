@@ -29,15 +29,28 @@ class World {
         }, 1000)
         setInterval(() => {
             this.checkThrownObjects();
+            this.checkCollecting();
         }, 200);
     }
 
     checkThrownObjects(){
-        if (this.keyboard.SPACE) {
-            debugger
+        if (this.keyboard.SPACE && this.character.amountOfP !== 0) {
             let bubble = new ThrowableObject(this.character.positionX + 150, this.character.positionY + 150);
             this.throwableObejcts.push(bubble);
+            this.character.isThrowing();
+            this.poisonBar.setPercentage(this.character.amountOfP)
+            console.log(this.character.amountOfP)
         }
+    }
+
+    checkCollecting(){
+        this.level.potions.forEach((potion, index) => {
+            if (this.character.isColliding(potion)) {
+                this.level.potions.splice(index, 1)
+                this.character.isCollectingPotion();
+                this.poisonBar.setPercentage(this.character.amountOfP);
+            }
+        })
     }
 
     checkCollisions(){
@@ -57,7 +70,8 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.floors);
         this.addObjectsToMap(this.level.lights);
-        this.addObjectsToMap(this.throwableObejcts)
+        this.addObjectsToMap(this.throwableObejcts);
+        this.addObjectsToMap(this.level.potions);
         this.ctx.translate(-this.camera_x, 0)
         // --------------- Space for fixed Objects -------------
         this.addToMap(this.statusBar);

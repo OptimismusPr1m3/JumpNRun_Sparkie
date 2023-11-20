@@ -47,4 +47,12 @@ const level1 = new Level([
     // thir floor
     new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 540*5),
     new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 540*4)
-])
+],
+[
+    new Potion(),
+    new Potion(),
+    new Potion(),
+    new Potion(),
+    new Potion(),
+]
+)

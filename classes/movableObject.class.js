@@ -5,6 +5,7 @@ class MovableObject extends DrawableObject {
     swimming_sound;
     speedY = 0;
     acceleration = 0.6;
+    amountOfP = 0;
     isJumping;
     lastHit = 0;
     applyGravity() {
@@ -31,6 +32,13 @@ class MovableObject extends DrawableObject {
             this.positionY < moveableObject.positionY + moveableObject.height;
     }
 
+    isCollectingPotion(){
+        this.amountOfP += 20;
+        if (this.amountOfP > 100) {
+            this.amountOfP = 100;
+        }
+    }
+
     playAnimation(imagesArray) {
         let i = this.currentImage % imagesArray.length;  // let i = / % 6; => 1, Rest 1
         let path = imagesArray[i];
@@ -47,6 +55,13 @@ class MovableObject extends DrawableObject {
         timePassed = timePassed / 1000 //Differenz in sekunden
         //console.log(timePassed)
         return timePassed < 0.7 ;
+    }
+
+    isThrowing(){
+        this.amountOfP -= 20;
+        if (this.amountOfP < 0) {
+            this.amountOfP = 0;
+        }
     }
 
     hit() {

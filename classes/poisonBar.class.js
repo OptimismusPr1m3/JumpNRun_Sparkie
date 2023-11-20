@@ -16,4 +16,6 @@ class PoisonBar extends StatusBar{
         this.positionY = posY;
         this.setPercentage(0);
     }
+
+    
 }
