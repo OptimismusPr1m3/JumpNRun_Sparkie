@@ -7,14 +7,13 @@ class PoisonBar extends StatusBar{
         'sprites/4. Marcadores/green/poisoned bubbles/80_ copia 2.png',
         'sprites/4. Marcadores/green/poisoned bubbles/100_ copia 3.png',
     ]
-
+    width = 305
     constructor(posX, posY){
         super();
+        this.percentage = 0;
         this.loadImages(this.IMAGES)
         this.positionX = posX;
         this.positionY = posY;
-        this.width = 350;
-        this.height = 90;
-        this.setPercentage(100);
+        this.setPercentage(0);
     }
 }
