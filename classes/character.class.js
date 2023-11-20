@@ -96,7 +96,7 @@ class Character extends MovableObject {
                 this.moveLeft();
                 this.swimming_sound.play();
             }
-            if (this.world.keyboard.SPACE && !this.isJumping) {
+            if (this.world.keyboard.UP && !this.isJumping) {
                 this.jump();
             }
             this.world.camera_x = -this.positionX;
