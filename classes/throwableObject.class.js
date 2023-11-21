@@ -23,7 +23,6 @@ class ThrowableObject extends MovableObject {
             } else{
                 this.speedX = 0;
             }
-
         }, 1000 / 25)
     }
 }

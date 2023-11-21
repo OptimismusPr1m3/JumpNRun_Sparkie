@@ -30,10 +30,12 @@ class World {
         }, 1000)
         setInterval(() => {
             this.checkThrownObjects();
-            this.checkCollecting();
+            this.checkCollectingPotions();
+            this.checkCollectingCoins();
         }, 200);
         setInterval(() => {
             this.checkThrownObjectsCollidingEnemy();
+            this.checkIfThrownObjectIsMoving();
         }, 5);
     }
 
@@ -64,12 +66,29 @@ class World {
         }
     }
 
-    checkCollecting(){
+    checkIfThrownObjectIsMoving(){
+        this.throwableObejcts.forEach((bubble, index) => {
+            if (bubble.speedX == 0) {
+                this.throwableObejcts.splice(index, 1);
+            }
+        })
+    }
+
+    checkCollectingPotions(){
         this.level.potions.forEach((potion, index) => {
             if (this.character.isColliding(potion)) {
                 this.level.potions.splice(index, 1)
                 this.character.isCollectingPotion();
                 this.poisonBar.setPercentage(this.character.amountOfP);
+            }
+        })
+    }
+    checkCollectingCoins(){
+        this.level.coins.forEach((coin, index) => {
+            if (this.character.isColliding(coin)) {
+                this.level.coins.splice(index, 1)
+                this.character.isCollectingCoins();
+                this.coinBar.setPercentage(this.character.amountOfC);
             }
         })
     }
@@ -93,6 +112,7 @@ class World {
         this.addObjectsToMap(this.level.lights);
         this.addObjectsToMap(this.throwableObejcts);
         this.addObjectsToMap(this.level.potions);
+        this.addObjectsToMap(this.level.coins);
         this.ctx.translate(-this.camera_x, 0)
         // --------------- Space for fixed Objects -------------
         this.addToMap(this.statusBar);

@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject {
     speedY = 0;
     acceleration = 0.6;
     amountOfP = 0;
+    amountOfC = 0;
     isJumping;
     lastHit = 0;
     applyGravity() {
@@ -36,6 +37,13 @@ class MovableObject extends DrawableObject {
         this.amountOfP += 20;
         if (this.amountOfP > 100) {
             this.amountOfP = 100;
+        }
+    }
+
+    isCollectingCoins(){
+        this.amountOfC += 5;
+        if (this.amountOfC > 100) {
+            this.amountOfC = 100
         }
     }
 

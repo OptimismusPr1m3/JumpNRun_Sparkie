@@ -54,5 +54,16 @@ const level1 = new Level([
     new Potion(),
     new Potion(),
     new Potion()
+],
+[
+    new Coin(1000, 500),
+    new Coin(1050, 450),
+    new Coin(1100, 420),
+    new Coin(1150, 400),
+    new Coin(1200, 400),
+    new Coin(1250, 400),
+    new Coin(1300, 420),
+    new Coin(1350, 450),
+    new Coin(1400, 500),
 ]
 )
