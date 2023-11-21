@@ -54,7 +54,7 @@ class MovableObject extends DrawableObject {
         let timePassed = new Date().getTime() - this.lastHit; //Differenz in ms
         timePassed = timePassed / 1000 //Differenz in sekunden
         //console.log(timePassed)
-        return timePassed < 0.7 ;
+        return timePassed < 1 ;
     }
 
     isThrowing(){

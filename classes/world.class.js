@@ -26,11 +26,15 @@ class World {
     run() {
         setInterval(() => {
             this.checkCollisions();
+            
         }, 1000)
         setInterval(() => {
             this.checkThrownObjects();
             this.checkCollecting();
         }, 200);
+        setInterval(() => {
+            this.checkThrownObjectsCollidingEnemy();
+        }, 5);
     }
 
     checkThrownObjects(){
@@ -38,8 +42,25 @@ class World {
             let bubble = new ThrowableObject(this.character.positionX + 150, this.character.positionY + 150);
             this.throwableObejcts.push(bubble);
             this.character.isThrowing();
+            if (this.throwableObejcts) {
+                this.character.hasThrown = true;
+            }
             this.poisonBar.setPercentage(this.character.amountOfP)
             console.log(this.character.amountOfP)
+            
+        }
+    }
+
+    checkThrownObjectsCollidingEnemy(){
+        for (let i = 0; i < this.level.enemies.length; i++) {
+            const enemy = this.level.enemies[i];
+            for (let j = 0; j < this.throwableObejcts.length; j++) {
+                const bubble = this.throwableObejcts[j];
+                if (bubble.isColliding(enemy)) {
+                    this.level.enemies.splice(i, 1);
+                    this.throwableObejcts.splice(j, 1);
+                }
+            }
         }
     }
 

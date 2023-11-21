@@ -67,7 +67,7 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/5.Hurt/1.Poisoned/4.png',
         'sprites/1.Sharkie/5.Hurt/1.Poisoned/5.png',
     ]
-    
+    hasThrown = false;
     world;
 
     constructor() {
@@ -114,7 +114,7 @@ class Character extends MovableObject {
                 //swim Animation
                 this.playAnimation(this.IMAGES_SWIMMING);
             }  
-            },60);
+            },80);
         //idling Intervall
         setInterval(() => {
             if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT) {
