@@ -36,6 +36,7 @@ class World {
         setInterval(() => {
             this.checkThrownObjectsCollidingEnemy();
             this.checkIfThrownObjectIsMoving();
+            this.checkIfEnemyIsNearPlayer();
         }, 5);
     }
 
@@ -89,6 +90,15 @@ class World {
                 this.level.coins.splice(index, 1)
                 this.character.isCollectingCoins();
                 this.coinBar.setPercentage(this.character.amountOfC);
+            }
+        })
+    }
+
+    checkIfEnemyIsNearPlayer() {
+        this.level.enemies.forEach( enemy => {
+            const distance = this.character.positionX - enemy.positionX;
+            if (distance > -400) {
+                enemy.isPlayerNear = true;
             }
         })
     }
