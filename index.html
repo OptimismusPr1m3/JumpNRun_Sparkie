@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Sparkie</title>
+    <title>Sharkie</title>
     <script src="classes/drawableObject.class.js"></script>
     <script src="classes/movableObject.class.js"></script>
     <script src="classes/character.class.js"></script>
@@ -25,12 +26,33 @@
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
+
 <body>
-
-    <h1>Sparkie</h1> <button type="button" onclick="init()">Play</button>
-
-    <canvas id="canvas" style="width: 1080px; height: 720px;">
-
-    </canvas>
+    <section id="instructionSection" class="instruction-section">
+        <div class="heading">
+            <img class="sharkie" src="sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png">
+            <h1>Sharkie</h1>
+            <img class="endB" src="sprites/2.Enemy/3 Final Enemy/Attack/1.png">
+        </div>
+        <div class="instruction-column">
+            <div class="instructions">
+                <img class="width-arrow-keyes" src="sprites/6.Botones/Key/arrow keys.png" alt="arrow-keyes">
+                <img src="sprites/6.Botones/Tittles/Move title.png" alt="moveshark">
+            </div>
+            <div class="instructions">
+                <img class="width100" src="sprites/6.Botones/Key/Space Bar key.png" alt="">
+                <img src="sprites/6.Botones/Tittles/Attack tittle.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section id="game" class="game d-none">
+        <canvas id="canvas" style="width: 1080px; height: 720px;"></canvas>
+        <div class="btns-row">
+            <img src="sprites/6.Botones/Try again/Recurso 17.png">
+            <img src="sprites/6.Botones/Full Screen/Mesa de trabajo 7.png">
+        </div>
+    </section>
+    <img id="playBtn" onclick="init()" class="start-btn" src="sprites/6.Botones/Start/2.png">
 </body>
+
 </html>

@@ -2,11 +2,19 @@ let canvas;
 let world;
 let keyboard = new KeyBoard();
 function init() {
+    removeInstructionsScreen();
+    initLevel1();
     canvas = document.getElementById('canvas');
+    //canvas.style.display = 'flex';
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     world = new World(canvas, keyboard);
+}
 
+function removeInstructionsScreen() {
+    document.getElementById('instructionSection').classList.add('d-none');
+    document.getElementById('playBtn').classList.add('d-none');
+    canvas = document.getElementById('game').classList.remove('d-none');
 }
 
 window.addEventListener("keydown", (event) => {

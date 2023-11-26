@@ -4,8 +4,101 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('sprites/3. Background/Dark/completo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    font-family: 'LGuy', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 80px;
+    font-weight: 300;
+    color: white;
+    margin-top: 0;
+}
+
+.instruction-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+}
+
+.sharkie {
+    height: 300px;
+    width: 300px;
+    margin-top: -80px;
+}
+
+.endB {
+    height: 400px;
+    width: 450px;
+    margin-top: -160px;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 #canvas{
     background-color: black;
+}
+
+.start-btn {
+    width: 200px;
+}
+
+.instructions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 48px 0;
+}
+
+.width100 {
+    width: 400px;
+}
+
+.width-arrow-keyes {
+    width: 300px;
+}
+
+.instruction-column {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btns-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.btns-row img {
+    width: 300px;
+    height: 60px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+}
+
+.d-none {
+    display: none;
+}
+
+@font-face {
+    font-family: 'LGuy';
+    src: url('fonts/LuckiestGuy-Regular.ttf') format('truetype');
 }
