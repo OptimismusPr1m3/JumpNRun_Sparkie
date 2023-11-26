@@ -1,8 +1,11 @@
-class Endboss extends MovableObject{
+class Endboss extends MovableObject {
     height = 300;
     width = 300;
     positionY = 350;
-    IMAGES_IDLING =[
+    hp = 80;
+    hadFirstContact = false;
+    isHitFromSharkie = false;
+    IMAGES_IDLING = [
         'sprites/2.Enemy/3 Final Enemy/2.floating/1.png',
         'sprites/2.Enemy/3 Final Enemy/2.floating/2.png',
         'sprites/2.Enemy/3 Final Enemy/2.floating/3.png',
@@ -18,17 +21,53 @@ class Endboss extends MovableObject{
         'sprites/2.Enemy/3 Final Enemy/2.floating/13.png',
     ]
 
-    constructor(){
+    IMAGES_INTRODUCTION = [
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/1.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/2.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/3.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/4.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/5.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/6.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/7.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/8.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/9.png',
+        'sprites/2.Enemy/3 Final Enemy/1.Introduce/10.png',
+    ]
+
+    IMAGES_HURT = [
+        'sprites/2.Enemy/3 Final Enemy/Hurt/1.png',
+        'sprites/2.Enemy/3 Final Enemy/Hurt/2.png',
+        'sprites/2.Enemy/3 Final Enemy/Hurt/3.png',
+        'sprites/2.Enemy/3 Final Enemy/Hurt/4.png',
+    ]
+
+    constructor() {
         super().loadImage(this.IMAGES_IDLING[0]);
         this.loadImages(this.IMAGES_IDLING);
-        this.positionX = 800;
+        this.loadImages(this.IMAGES_INTRODUCTION);
+        this.loadImages(this.IMAGES_HURT);
+        this.positionX = 1800;
         this.animate();
     }
 
 
-    animate(){
+    animate() {
+        let i = 0;
         setInterval(() => {
-            this.playAnimation(this.IMAGES_IDLING)
-        }, 100);
+            console.log(world.character.positionX)
+            if (i < 10) {
+                this.playAnimation(this.IMAGES_INTRODUCTION);
+            } else {
+                this.playAnimation(this.IMAGES_IDLING)
+            }
+            i++;
+            if (world.character.positionX > 710 && !this.hadFirstContact) {
+                i = 0;
+                this.hadFirstContact = true;
+            }
+            if (this.isHitFromSharkie) {
+                this.playAnimation(this.IMAGES_HURT);
+            }
+        }, 140);
     }
 }

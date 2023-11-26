@@ -3,6 +3,7 @@ class PufferFish extends MovableObject {
     height = 70;
     width = 60;
     positionY = 550;
+    hp = 20;
     isPlayerNear = false;
     isAggro = false;
     IMAGES_WALKING = [

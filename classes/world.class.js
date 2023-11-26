@@ -26,7 +26,7 @@ class World {
     run() {
         setInterval(() => {
             this.checkCollisions();
-            
+
         }, 1000)
         setInterval(() => {
             this.checkThrownObjects();
@@ -40,7 +40,7 @@ class World {
         }, 5);
     }
 
-    checkThrownObjects(){
+    checkThrownObjects() {
         if (this.keyboard.SPACE && this.character.amountOfP !== 0) {
             let bubble = new ThrowableObject(this.character.positionX + 150, this.character.positionY + 150);
             this.throwableObejcts.push(bubble);
@@ -50,24 +50,27 @@ class World {
             }
             this.poisonBar.setPercentage(this.character.amountOfP)
             console.log(this.character.amountOfP)
-            
+
         }
     }
 
-    checkThrownObjectsCollidingEnemy(){
+    checkThrownObjectsCollidingEnemy() {
         for (let i = 0; i < this.level.enemies.length; i++) {
             const enemy = this.level.enemies[i];
             for (let j = 0; j < this.throwableObejcts.length; j++) {
                 const bubble = this.throwableObejcts[j];
                 if (bubble.isColliding(enemy)) {
-                    this.level.enemies.splice(i, 1);
+                    enemy.hit();
+                    if (enemy.hp == 0) {
+                        this.level.enemies.splice(i, 1);
+                    }
                     this.throwableObejcts.splice(j, 1);
                 }
             }
         }
     }
 
-    checkIfThrownObjectIsMoving(){
+    checkIfThrownObjectIsMoving() {
         this.throwableObejcts.forEach((bubble, index) => {
             if (bubble.speedX == 0) {
                 this.throwableObejcts.splice(index, 1);
@@ -75,7 +78,7 @@ class World {
         })
     }
 
-    checkCollectingPotions(){
+    checkCollectingPotions() {
         this.level.potions.forEach((potion, index) => {
             if (this.character.isColliding(potion)) {
                 this.level.potions.splice(index, 1)
@@ -84,7 +87,7 @@ class World {
             }
         })
     }
-    checkCollectingCoins(){
+    checkCollectingCoins() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
                 this.level.coins.splice(index, 1)
@@ -95,7 +98,7 @@ class World {
     }
 
     checkIfEnemyIsNearPlayer() {
-        this.level.enemies.forEach( enemy => {
+        this.level.enemies.forEach(enemy => {
             const distance = this.character.positionX - enemy.positionX;
             if (distance > -400) {
                 enemy.isPlayerNear = true;
@@ -103,7 +106,7 @@ class World {
         })
     }
 
-    checkCollisions(){
+    checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 //console.log('Collision with character:', enemy)
@@ -156,16 +159,16 @@ class World {
         mo.draw(this.ctx)
         mo.showHitbox(this.ctx)
         if (mo.otherDirection) {
-           this.flipImageBack(mo);
+            this.flipImageBack(mo);
         }
     }
-    flipImage(moveableObject){
+    flipImage(moveableObject) {
         this.ctx.save();
         this.ctx.translate(moveableObject.width, 0);
         this.ctx.scale(-1, 1);
         moveableObject.positionX = moveableObject.positionX * -1
     }
-    flipImageBack(moveableObject){
+    flipImageBack(moveableObject) {
         moveableObject.positionX = moveableObject.positionX * -1;
         this.ctx.restore();
     }
