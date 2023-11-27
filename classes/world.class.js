@@ -110,9 +110,15 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 //console.log('Collision with character:', enemy)
+                enemy.isDamagingPlayer = true;
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.hp);
+                if (this.character.hp == 0) {
+                    //this.character.isAlive = false;
+                }
                 //console.log("Leben des Characters:", this.character.hp)
+            } else {
+                enemy.isDamagingPlayer = false;
             };
         });
     }

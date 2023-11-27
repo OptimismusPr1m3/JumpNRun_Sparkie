@@ -9,6 +9,9 @@ class MovableObject extends DrawableObject {
     amountOfC = 0;
     isJumping;
     lastHit = 0;
+    isDamagingPlayer = false;
+    isAttacking = false;
+    isGameOver = false;
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {

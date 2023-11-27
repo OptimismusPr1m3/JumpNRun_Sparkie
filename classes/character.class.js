@@ -75,7 +75,7 @@ class Character extends MovableObject {
         this.speed = 7;
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SWIMMING);
-        //this.loadImages(this.IMAGES_ATTACKING);
+        this.loadImages(this.IMAGES_ATTACKING);
         this.loadImages(this.IMAGES_SWIM_UP);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
@@ -85,49 +85,50 @@ class Character extends MovableObject {
     }
 
     animate() {
-        // moving x position
         setInterval(() => {
-            this.swimming_sound.pause();
-            if (this.world.keyboard.RIGHT && this.positionX < this.world.level.level_end_x) {
-                this.otherDirection = false;
-                this.moveRight();
-                this.swimming_sound.play();
-            } else if (this.world.keyboard.LEFT && this.positionX > 0) {
-                this.otherDirection = true;
-                this.moveLeft();
-                this.swimming_sound.play();
-            }
-            if (this.world.keyboard.UP && !this.isJumping) {
-                this.jump();
-            }
-            this.world.camera_x = -this.positionX;
+            this.moveCharacter();
         }, 1000 / 60);
-        //animation Intervall
+        let i = 0;
         setInterval(() => {
-            if (this.isDead()) {
+            if (this.isDead() && i < 12) {
                 this.playAnimation(this.IMAGES_DEAD)
-            } else if (this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT)
-            } else if (this.positionY < 390) {
-                this.playAnimation(this.IMAGES_SWIM_UP);
-            } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT) {
-                //swim Animation
-                this.playAnimation(this.IMAGES_SWIMMING);
-            }  
-            },80);
-        //idling Intervall
-        setInterval(() => {
-            if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT) {
-                this.playAnimation(this.IMAGES_IDLE);
+                i++
+                console.log(i)
+                if (i == 12) {
+                    this.isAlive = false;
+                }
+            } else {
+                this.playMovementAnimations();
             }
-        }, 100);
+        }, 150);
     }
 
-    /*attacking() {
-        let i = this.currentImage % this.IMAGES_ATTACKING.length;
-        let path = this.IMAGES_ATTACKING[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
-
-    }*/
+    moveCharacter() {
+        this.swimming_sound.pause();
+        if (this.world.keyboard.RIGHT && this.positionX < this.world.level.level_end_x && this.isAlive) {
+            this.otherDirection = false;
+            this.moveRight();
+            this.swimming_sound.play();
+        } else if (this.world.keyboard.LEFT && this.positionX > 0 && this.isAlive) {
+            this.otherDirection = true;
+            this.moveLeft();
+            this.swimming_sound.play();
+        }
+        if (this.world.keyboard.UP && !this.isJumping && this.isAlive) {
+            this.jump();
+        }
+        this.world.camera_x = -this.positionX;
+    }
+    playMovementAnimations() {
+        if (this.isHurt() && this.isAlive) {
+            this.playAnimation(this.IMAGES_HURT)
+        } else if (this.positionY < 390 && this.isAlive) {
+            this.playAnimation(this.IMAGES_SWIM_UP);
+        } else if (this.world.keyboard.LEFT && !this.isHurt() && this.isAlive || this.world.keyboard.RIGHT && !this.isHurt() && this.isAlive) {
+            //swim Animation
+            this.playAnimation(this.IMAGES_SWIMMING);
+        } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && this.isAlive && !this.isHurt()) {
+            this.playAnimation(this.IMAGES_IDLE);
+        }
+    }
 }

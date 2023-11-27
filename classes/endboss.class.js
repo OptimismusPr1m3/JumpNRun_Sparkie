@@ -41,11 +41,21 @@ class Endboss extends MovableObject {
         'sprites/2.Enemy/3 Final Enemy/Hurt/4.png',
     ]
 
+    IMAGES_ATTACKING = [
+        'sprites/2.Enemy/3 Final Enemy/Attack/1.png',
+        'sprites/2.Enemy/3 Final Enemy/Attack/2.png',
+        'sprites/2.Enemy/3 Final Enemy/Attack/3.png',
+        'sprites/2.Enemy/3 Final Enemy/Attack/4.png',
+        'sprites/2.Enemy/3 Final Enemy/Attack/5.png',
+        'sprites/2.Enemy/3 Final Enemy/Attack/6.png',
+    ]
+
     constructor() {
         super().loadImage(this.IMAGES_IDLING[0]);
         this.loadImages(this.IMAGES_IDLING);
         this.loadImages(this.IMAGES_INTRODUCTION);
         this.loadImages(this.IMAGES_HURT);
+        this.loadImages(this.IMAGES_ATTACKING);
         this.positionX = 1800;
         this.animate();
     }
@@ -54,7 +64,7 @@ class Endboss extends MovableObject {
     animate() {
         let i = 0;
         setInterval(() => {
-            console.log(world.character.positionX)
+            //console.log(world.character.positionX)
             if (i < 10) {
                 this.playAnimation(this.IMAGES_INTRODUCTION);
             } else {
@@ -65,8 +75,11 @@ class Endboss extends MovableObject {
                 i = 0;
                 this.hadFirstContact = true;
             }
-            if (this.isHitFromSharkie) {
+            if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
+            }
+            if (this.isDamagingPlayer) {
+                this.playAnimation(this.IMAGES_ATTACKING);
             }
         }, 140);
     }
