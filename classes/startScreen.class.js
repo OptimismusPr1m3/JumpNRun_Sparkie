@@ -3,7 +3,7 @@ class StartScreen {
     canvas;
     startScreenImages = startImages;
     stopDrawing = false;
-    playBtn = new PlayButton(450, 460)
+    playBtn = new PlayButton(430, 460)
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas
@@ -14,8 +14,10 @@ class StartScreen {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.addObjectsToMap(this.startScreenImages.floors);
         this.addObjectsToMap(this.startScreenImages.lights);
+        this.addObjectsToMap(this.startScreenImages.coins);
+        this.addObjectsToMap(this.startScreenImages.potions);
+        this.addObjectsToMap(this.startScreenImages.enemies);
         this.addToMap(this.playBtn);
-
         let self = this;
         if (!this.stopDrawing) {
             requestAnimationFrame(() => {
