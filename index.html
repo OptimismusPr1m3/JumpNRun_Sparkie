@@ -11,6 +11,7 @@
     <script src="classes/character.class.js"></script>
     <script src="classes/pufferFish.class.js"></script>
     <script src="classes/world.class.js"></script>
+    <script src="classes/startScreen.class.js"></script>
     <script src="classes/light.class.js"></script>
     <script src="classes/floor.class.js"></script>
     <script src="classes/keyboard.class.js"></script>
@@ -23,36 +24,41 @@
     <script src="classes/healthBar.class.js"></script>
     <script src="classes/poisonBar.class.js"></script>
     <script src="classes/coinBar.class.js"></script>
+    <script src="classes/playBtn.class.js"></script>
     <script src="levels/level1.js"></script>
+    <script src="levels/startImages.js"></script>
     <script src="js/game.js"></script>
 </head>
 
-<body>
+<body onload="initStartScreen()">
     <section id="instructionSection" class="instruction-section">
         <div class="heading">
             <img class="sharkie" src="sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png">
             <h1>Sharkie</h1>
             <img class="endB" src="sprites/2.Enemy/3 Final Enemy/Attack/1.png">
         </div>
-        <div class="instruction-column">
-            <div class="instructions">
-                <img class="width-arrow-keyes" src="sprites/6.Botones/Key/arrow keys.png" alt="arrow-keyes">
-                <img src="sprites/6.Botones/Tittles/Move title.png" alt="moveshark">
-            </div>
-            <div class="instructions">
-                <img class="width100" src="sprites/6.Botones/Key/Space Bar key.png" alt="">
-                <img src="sprites/6.Botones/Tittles/Attack tittle.png" alt="">
-            </div>
-        </div>
     </section>
-    <section id="game" class="game d-none">
-        <canvas id="canvas" style="width: 1080px; height: 720px;"></canvas>
-        <div class="btns-row">
-            <img src="sprites/6.Botones/Try again/Recurso 17.png">
+    <section id="game" class="game">
+        <canvas id="GameCanvas" style="width: 1080px; height: 720px; background-color: black;"></canvas>
+        <!--<div class="btns-row">
+            <img src="sprites/6.Botones/Try again/Recurso 17.png"> 
             <img src="sprites/6.Botones/Full Screen/Mesa de trabajo 7.png">
-        </div>
+        </div>-->
     </section>
-    <img id="playBtn" onclick="init()" class="start-btn" src="sprites/6.Botones/Start/2.png">
+    <div class="instruction-column">
+        <div class="instructions">
+            <div class="row-instructions">
+                <img class="width-arrow-keyes" src="sprites/6.Botones/Key/arrow keys.png" alt="arrow-keyes">
+                <img class="instructions-text" src="sprites/6.Botones/Tittles/Move title.png" alt="moveshark">
+            </div>
+            <div class="row-instructions">
+                <img class="width100" src="sprites/6.Botones/Key/Space Bar key.png" alt="">
+                <img onclick="" class="instructions-text" src="sprites/6.Botones/Tittles/Attack tittle.png" alt="">
+            </div>
+        </div>
+
+    </div>
+    <!--<img id="playBtn" onclick="init()" class="start-btn" src="sprites/6.Botones/Start/2.png">-->
 </body>
 
 </html>

@@ -1,21 +1,37 @@
 let canvas;
 let world;
+let startScreen;
 let keyboard = new KeyBoard();
+
 function init() {
-    removeInstructionsScreen();
+    //removeInstructionsScreen();
     initLevel1();
-    canvas = document.getElementById('canvas');
+    canvas = document.getElementById('GameCanvas');
     //canvas.style.display = 'flex';
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     world = new World(canvas, keyboard);
 }
 
-function removeInstructionsScreen() {
-    document.getElementById('instructionSection').classList.add('d-none');
-    document.getElementById('playBtn').classList.add('d-none');
-    canvas = document.getElementById('game').classList.remove('d-none');
+function initStartScreen() {
+    canvas = document.getElementById('GameCanvas');
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    setUpStartScreen(canvas);
 }
+
+function setUpStartScreen(canvas) {
+    initStartImages();
+    startScreen = new StartScreen(canvas, keyboard)
+}
+
+const intervallId = setInterval(() => {
+    if (startScreen.stopDrawing) {
+        clearInterval(intervallId)
+        init();
+    }
+}, 10);
+
 
 window.addEventListener("keydown", (event) => {
     switch (event['key']) {
@@ -48,3 +64,4 @@ window.addEventListener("keyup", (event) =>{
             break;
     }
 })
+

@@ -162,12 +162,35 @@ class World {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
+        // this.testJumpFunc(mo); // Test function for klick event handling
         mo.draw(this.ctx)
         mo.showHitbox(this.ctx)
         if (mo.otherDirection) {
             this.flipImageBack(mo);
         }
     }
+
+    /* Test Funtion for click event handling maybe using it for later mute button and fullscreen switch ;-)
+    testJumpFunc(mo) {
+        if (mo instanceof Character) {
+            this.canvas.addEventListener('click', (event) => {
+                const canvasRect = this.canvas.getBoundingClientRect();
+                const clickX = event.clientX - canvasRect.left;
+                const clickY = event.clientY - canvasRect.top;
+    
+                if (
+                    clickX >= mo.positionX + this.camera_x &&
+                    clickX <= mo.positionX + mo.width + this.camera_x &&
+                    clickY >= mo.positionY &&
+                    clickY <= mo.positionY + mo.height &&
+                    mo.isAlive
+                ) {
+                    mo.jump();
+                }
+            });
+        }
+    }*/
+
     flipImage(moveableObject) {
         this.ctx.save();
         this.ctx.translate(moveableObject.width, 0);
