@@ -8,8 +8,8 @@ function init() {
     initLevel1();
     canvas = document.getElementById('GameCanvas');
     //canvas.style.display = 'flex';
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    //canvas.width = canvas.offsetWidth;
+    //canvas.height = canvas.offsetHeight;
     world = new World(canvas, keyboard);
 }
 
