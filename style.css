@@ -118,8 +118,14 @@ canvas {
     src: url('fonts/LuckiestGuy-Regular.ttf') format('truetype');
 }
 
-@media only screen and (max-width: 1080px) {
+@media (max-width: 1080px) {
     canvas {
         width: 100%;
+    }
+}
+
+@media (max-height: 720px) {
+    canvas {
+        height: 100vh;
     }
 }
