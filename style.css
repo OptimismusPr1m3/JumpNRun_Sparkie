@@ -1,4 +1,4 @@
-body{
+body {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,7 +24,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center ;
+    align-items: center;
 }
 
 .sharkie {
@@ -46,8 +46,9 @@ h1 {
     width: 100%;
 }
 
-#canvas{
+canvas {
     background-color: black;
+    display: block;
 }
 
 .start-btn {
@@ -60,12 +61,12 @@ h1 {
     align-items: center;
     justify-content: space-evenly;
     margin: 48px 0;
-    
+
 }
 
 .row-instructions {
-    display: flex; 
-    flex-direction: row; 
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -115,4 +116,10 @@ h1 {
 @font-face {
     font-family: 'LGuy';
     src: url('fonts/LuckiestGuy-Regular.ttf') format('truetype');
+}
+
+@media only screen and (max-width: 1080px) {
+    canvas {
+        width: 100%;
+    }
 }
