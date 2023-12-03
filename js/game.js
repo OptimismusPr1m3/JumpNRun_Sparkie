@@ -32,6 +32,10 @@ const intervallId = setInterval(() => {
     }
 }, 10);
 
+function startGame() {
+    startScreen.stopDrawing = true;
+    document.getElementById('startButton').style = 'display: none';
+}
 
 window.addEventListener("keydown", (event) => {
     switch (event['key']) {

@@ -93,10 +93,8 @@ canvas {
 
 .btns-row {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 32px;
+    justify-content: center;
+    margin-top: -100px;
 }
 
 .btns-row img {
