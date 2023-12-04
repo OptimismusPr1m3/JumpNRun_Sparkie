@@ -5,6 +5,7 @@ class World {
     canvas;
     ctx;
     keyboard;
+    intervallIDs = [];
     camera_x = 0;
     statusBar = new HealthBar(10, 45);
     poisonBar = new PoisonBar(5, -5);
@@ -23,10 +24,18 @@ class World {
         this.character.world = this;
     }
 
+    clearAllIntervalls() {
+        if (!(this.character.isAlive)) {
+            for (let i = 0; i < 999; i++) {
+                window.clearInterval(i);
+            }
+        }
+    }
+
     run() {
         setInterval(() => {
             this.checkCollisions();
-
+            this.clearAllIntervalls();
         }, 1000)
         setInterval(() => {
             this.checkThrownObjects();

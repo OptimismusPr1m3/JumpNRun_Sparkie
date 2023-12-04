@@ -63,7 +63,7 @@ class Endboss extends MovableObject {
 
     animate() {
         let i = 0;
-        setInterval(() => {
+        const bossAnim = setInterval(() => {
             //console.log(world.character.positionX)
             if (i < 10) {
                 this.playAnimation(this.IMAGES_INTRODUCTION);
