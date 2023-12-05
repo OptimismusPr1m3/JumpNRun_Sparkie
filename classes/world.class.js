@@ -28,6 +28,7 @@ class World {
         if (!(this.character.isAlive)) {
             for (let i = 0; i < 999; i++) {
                 window.clearInterval(i);
+                document.getElementById('restartButton').style = 'display: block';
             }
         }
     }

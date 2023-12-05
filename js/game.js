@@ -39,6 +39,11 @@ function startGame() {
     document.getElementById('startButton').style = 'display: none';
 }
 
+function restartGame() {
+    document.getElementById('restartButton').style = 'display: none';
+    init();
+}
+
 window.addEventListener("keydown", (event) => {
     switch (event['key']) {
         case 'w': keyboard.UP = true;
