@@ -15,6 +15,7 @@ class World {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.keyboard.handleButtonsMobile();
         this.draw();
         this.setWorld();
         this.run();

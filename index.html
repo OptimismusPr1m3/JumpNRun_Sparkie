@@ -42,6 +42,10 @@
     </section>
     <section id="game" class="game">
         <canvas id="GameCanvas" width="1080px" height="720px"></canvas>
+        <div style="display: flex; z-index: 9999999;">
+            <button id="leftBtn">left</button>
+            <button id="rightBtn">right</button>
+        </div>
         <div class="btns-row">
             <img id="startButton" src="sprites/6.Botones/Start/2.png" onclick="startGame();"> 
             <img id="restartButton" src="sprites/6.Botones/Try again/Recurso 17.png"style="display: none;" onclick="restartGame();">
