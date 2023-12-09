@@ -7,21 +7,20 @@ class StartScreen {
     startScreenImages = startImages;
     stopDrawing = false;
     isFullscreen = false;
-    playBtn = new PlayButton(430, 160); // 430, 260
-    //muteBtn = new Option('buttons/mute.png', 940, 20, true, false);
+    //playBtn = new PlayButton(430, 160); // 430, 260
     fullscreenBtn = new Option('buttons/fullscreen.png', 1000, 20, false, true)
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas
-        this.canvasRect = this.canvas.getBoundingClientRect();
+        //this.canvasRect = this.canvas.getBoundingClientRect();
         this.drawStartScreen();
-        this.gameButtonClickListener = (event) => this.handleGameButtonClick(event);
+        //this.gameButtonClickListener = (event) => this.handleGameButtonClick(event);
         //this.muteButtonClickListener = (event) => this.handleMuteButtonClick(event);
-        this.fullscreenButtonClickListener = (event) => this.handleFullscreenButtonClick(event);
+        //this.fullscreenButtonClickListener = (event) => this.handleFullscreenButtonClick(event);
 
-        this.canvas.addEventListener('click', this.gameButtonClickListener);
+        //this.canvas.addEventListener('click', this.gameButtonClickListener);
         //this.canvas.addEventListener('click', this.muteButtonClickListener);
-        this.canvas.addEventListener('click', this.fullscreenButtonClickListener);
+        //this.canvas.addEventListener('click', this.fullscreenButtonClickListener);
 
     }
 
@@ -32,7 +31,7 @@ class StartScreen {
         this.addObjectsToMap(this.startScreenImages.coins);
         this.addObjectsToMap(this.startScreenImages.potions);
         this.addObjectsToMap(this.startScreenImages.enemies);
-        this.addToMap(this.playBtn);
+        //this.addToMap(this.playBtn);
         //this.addToMap(this.muteBtn);
         this.addToMap(this.fullscreenBtn);
         let self = this;
@@ -55,14 +54,14 @@ class StartScreen {
     }
 
 
-    handleGameButtonClick(event) {
+    /*handleGameButtonClick(event) {
         const clickX = event.clientX - this.canvasRect.left;
         const clickY = event.clientY - this.canvasRect.top;
         if (this.playBtn instanceof PlayButton && this.isClickingOnElement(clickX, clickY, this.playBtn)) {
             this.stopDrawing = true;
             this.canvas.removeEventListener('click', this.gameButtonClickListener);
         }
-    }
+    }*/
     /*
         handleMuteButtonClick(event) {
             const clickX = event.clientX - this.canvasRect.left;
@@ -74,7 +73,7 @@ class StartScreen {
             }
         }*/
 
-    handleFullscreenButtonClick(event) {
+    /*handleFullscreenButtonClick(event) {
         const clickX = event.clientX - this.canvasRect.left;
         const clickY = event.clientY - this.canvasRect.top;
         if (this.fullscreenBtn instanceof Option && this.isClickingOnElement(clickX, clickY, this.fullscreenBtn)) {
@@ -82,7 +81,7 @@ class StartScreen {
             this.canvas.requestFullscreen();
             this.canvas.removeEventListener('click', this.fullscreenButtonClickListener);
         }
-    }
+    }*/
 
 
 
@@ -144,7 +143,7 @@ class StartScreen {
                 adjustedClickY <= obj.positionY + obj.height);
         }
     */
-    isClickingOnElement(clickX, clickY, obj) {
+    /*isClickingOnElement(clickX, clickY, obj) {
         const scaleFactorX = this.canvas.width / this.originalCanvasWidth;
         const scaleFactorY = this.canvas.height / this.originalCanvasHeight;
 
@@ -159,7 +158,7 @@ class StartScreen {
             adjustedClickY >= obj.positionY - obj.height * (clickThreshold - 1) / 2 &&
             adjustedClickY <= obj.positionY + obj.height * clickThreshold
         );
-    }
+    }*/
 
 
     draw(ctx) {

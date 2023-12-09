@@ -62,21 +62,21 @@ class KeyBoard{
             event.preventDefault();
             this.RIGHT = false;
         });
-        /*document.getElementById('jumpBtn').addEventListener("touchstart", (event) => {
+        document.getElementById('jumpBtn').addEventListener("touchstart", (event) => {
             event.preventDefault();
             this.UP = true;
         })
         document.getElementById('jumpBtn').addEventListener("touchend", (event) => {
             event.preventDefault();
             this.UP = false;
-        })*/
-        /*document.getElementById('attackBtn').addEventListener("touchstart", (event) => {
+        })
+        document.getElementById('attackBtn').addEventListener("touchstart", (event) => {
             event.preventDefault();
             this.SPACE = true;
         })
         document.getElementById('attackBtn').addEventListener("touchend", (event) => {
             event.preventDefault();
             this.SPACE = false;
-        })*/
+        })
     }
 }

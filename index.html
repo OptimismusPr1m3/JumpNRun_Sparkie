@@ -42,13 +42,20 @@
     </section>
     <section id="game" class="game">
         <canvas id="GameCanvas" width="1080px" height="720px"></canvas>
-        <div style="display: flex; z-index: 9999999;">
-            <button id="leftBtn">left</button>
-            <button id="rightBtn">right</button>
+        <div class="hud-movement">
+            <div class="hud-element">
+                <button id="leftBtn"><img src="sprites/6.Botones/Key/moveLeft.png" alt=""></button>
+                <button id="rightBtn"><img src="sprites/6.Botones/Key/moveRight.png" alt=""></button>
+            </div>
+            <div class="hud-element">
+                <button id="jumpBtn"><img src="sprites/6.Botones/Key/moveUp.png"></button>
+                <button id="attackBtn"><img src="sprites/6.Botones/Key/attack.png"></button>
+            </div>
         </div>
         <div class="btns-row">
-            <img id="startButton" src="sprites/6.Botones/Start/2.png" onclick="startGame();"> 
-            <img id="restartButton" src="sprites/6.Botones/Try again/Recurso 17.png"style="display: none;" onclick="restartGame();">
+            <img id="startButton" src="sprites/6.Botones/Start/2.png" onclick="startGame();">
+            <img id="restartButton" src="sprites/6.Botones/Try again/Recurso 17.png" style="display: none;"
+                onclick="restartGame();">
         </div>
     </section>
     <div class="instruction-column">
