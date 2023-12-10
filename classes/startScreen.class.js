@@ -8,7 +8,7 @@ class StartScreen {
     stopDrawing = false;
     isFullscreen = false;
     //playBtn = new PlayButton(430, 160); // 430, 260
-    fullscreenBtn = new Option('buttons/fullscreen.png', 1000, 20, false, true)
+    //fullscreenBtn = new Option('buttons/fullscreen.png', 1000, 20, false, true)
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas
@@ -33,7 +33,7 @@ class StartScreen {
         this.addObjectsToMap(this.startScreenImages.enemies);
         //this.addToMap(this.playBtn);
         //this.addToMap(this.muteBtn);
-        this.addToMap(this.fullscreenBtn);
+        //this.addToMap(this.fullscreenBtn);
         let self = this;
         if (!this.stopDrawing) {
             requestAnimationFrame(() => {

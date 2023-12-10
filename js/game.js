@@ -16,8 +16,8 @@ function init() {
 
 function initStartScreen() {
     canvas = document.getElementById('GameCanvas');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    canvas.width = 1080;
+    canvas.height = 720;
     setUpStartScreen(canvas);
 }
 
@@ -33,11 +33,16 @@ const intervallId = setInterval(() => {
     }
 }, 10);
 
+//window.addEventListener('load', checkOrientation);
 
+//window.addEventListener('orientationchange', checkOrientation);
 
 function startGame() {
     startScreen.stopDrawing = true;
     document.getElementById('startButton').style = 'display: none';
+    if (window.matchMedia('(orientation: landscape) and (max-width: 720px)').matches) {
+        document.getElementById('hudMovement').style = 'display: flex';
+    }
 }
 
 function restartGame() {

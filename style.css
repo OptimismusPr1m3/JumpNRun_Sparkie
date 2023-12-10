@@ -49,6 +49,7 @@ h1 {
 canvas {
     background-color: black;
     display: block;
+    aspect-ratio: auto;
 }
 
 .start-btn {
@@ -85,14 +86,13 @@ canvas {
 }
 
 .instruction-column {
-    width: 60%;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 .hud-movement {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     gap: 330px;
@@ -151,12 +151,103 @@ canvas {
     .btns-row {
         right: 43%;
     }
+
+    .width-arrow-keyes {
+        width: 200px;
+    }
+
+    .instructions-text {
+        height: 32px;
+    }
+
+    .width100 {
+        width: 300px;
+    }
 }
 
 @media (max-width: 1080px) {
     canvas {
         width: 100%;
     }
+
+    .btns-row {
+        right: 44%;
+    }
+
+    .btns-row img {
+        width: 172px;
+        height: 52px;
+    }
+
+    .heading {
+        margin-top: -100px;
+    }
+
+    .endB {
+        height: 300px;
+        width: 350px;
+    }
+
+    .sharkie {
+        height: 200px;
+        width: 200px;
+    }
+
+    h1 {
+        font-size: 60px;
+        margin-right: -100px;
+    }
+
+    .row-instructions {
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 165px;
+    }
+
+    .instructions-text {
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    h1 {
+        margin-right: -50px;
+    }
+
+    .endB {
+        height: 250px;
+        width: 300px;
+    }
+
+    .btns-row {
+        right: 43%;
+    }
+}
+
+@media (max-width: 800px) {
+    h1 {
+        margin-right: 0px;
+    }
+
+    .endB {
+        display: none;
+    }
+
+    .sharkie {
+        display: none;
+    }
+
+    .btns-row {
+        right: 39%;
+    }
+
+    .heading {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 620px) {
+
 }
 
 @media (max-height: 720px) {
