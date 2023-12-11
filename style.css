@@ -147,6 +147,49 @@ canvas {
     }
 }
 
+@media (max-height: 1080px) {
+    .heading {
+        margin-bottom: -80px;
+        z-index: 100;
+    }
+    .endb {
+        margin-top: -130px;
+    }
+    .sharkie {
+        margin-top: -60;
+    }
+    .instructions {
+        margin: -160px 0;
+        justify-content: space-evenly;
+    }
+    .row-instructions {
+        flex-direction: column;
+    }
+    .width100 {
+        height: 60px;
+        width: 250px;
+    }
+    .instructions-text {
+        height: 26px;
+    }
+    .width-arrow-keyes {
+        width: 200px;
+    }
+}
+
+@media (max-height: 1080px) and (max-width: 1080px){
+    .instructions {
+        margin: -85px 0;
+    }
+}
+
+@media (max-height: 1080px) and (max-width: 800px){
+    .instructions {
+        margin: 0 0;
+        margin-top: 40px;
+    }
+}
+
 @media (max-width: 1500px) {
     .btns-row {
         right: 43%;
@@ -246,8 +289,20 @@ canvas {
     }
 }
 
-@media (max-width: 620px) {
-
+@media (max-width: 650px) {
+    .width-arrow-keyes {
+        width: 132px;
+    }
+    .width100 {
+        width: 200px;
+        height: 40px;
+    }
+    .instructions-text {
+        height: 24px;
+    }
+    .instructions {
+        margin-top: 0;
+    }
 }
 
 @media (max-height: 720px) {
