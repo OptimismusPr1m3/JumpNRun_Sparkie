@@ -70,7 +70,7 @@ class World {
             const enemy = this.level.enemies[i];
             for (let j = 0; j < this.throwableObejcts.length; j++) {
                 const bubble = this.throwableObejcts[j];
-                if (bubble.isColliding(enemy)) {
+                if (bubble.isThrowableColliding(enemy)) {
                     enemy.hit();
                     if (enemy.hp == 0) {
                         this.level.enemies.splice(i, 1);

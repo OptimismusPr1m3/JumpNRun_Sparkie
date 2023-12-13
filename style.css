@@ -136,6 +136,44 @@ canvas {
     display: none;
 }
 
+.game-over-section {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 200;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.game-over-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.game-over-title {
+    margin-bottom: 64px;
+}
+
+.row-game-over-btns {
+    display: flex;
+    flex-direction: row;
+}
+
+.restart-btn {
+    margin-right: 48px;
+}
+
+.home-btn {
+    margin-left: 48px;
+}
+
 @font-face {
     font-family: 'LGuy';
     src: url('fonts/LuckiestGuy-Regular.ttf') format('truetype');
@@ -152,38 +190,45 @@ canvas {
         margin-bottom: -80px;
         z-index: 100;
     }
+
     .endb {
         margin-top: -130px;
     }
+
     .sharkie {
         margin-top: -60;
     }
+
     .instructions {
         margin: -160px 0;
         justify-content: space-evenly;
     }
+
     .row-instructions {
         flex-direction: column;
     }
+
     .width100 {
         height: 60px;
         width: 250px;
     }
+
     .instructions-text {
         height: 26px;
     }
+
     .width-arrow-keyes {
         width: 200px;
     }
 }
 
-@media (max-height: 1080px) and (max-width: 1080px){
+@media (max-height: 1080px) and (max-width: 1080px) {
     .instructions {
         margin: -85px 0;
     }
 }
 
-@media (max-height: 1080px) and (max-width: 800px){
+@media (max-height: 1080px) and (max-width: 800px) {
     .instructions {
         margin: 0 0;
         margin-top: 40px;
@@ -293,21 +338,82 @@ canvas {
     .width-arrow-keyes {
         width: 132px;
     }
+
     .width100 {
         width: 200px;
         height: 40px;
     }
+
     .instructions-text {
         height: 24px;
     }
+
     .instructions {
         margin-top: 0;
     }
+
+    .btns-row {
+        right: 35%;
+    }
 }
 
-@media (max-height: 720px) {
-    canvas {
-        height: 100vh;
+@media (max-width: 550px) {
+    .btns-row {
+        right: 33%;
+    }
+}
+
+@media (max-width: 490px) {
+    .btns-row img {
+        width: 120px;
+        height: 34px;
+    }
+
+    .btns-row {
+        right: 36%;
+    }
+}
+
+@media (max-width: 450px) {
+    .row-instructions {
+        justify-content: center;
+        height: 124px;
+    }
+
+    .width100 {
+        width: 125px;
+        height: 24px;
+    }
+
+    .width-arrow-keyes {
+        width: 88px;
+    }
+
+    .instructions-text {
+        height: 16px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 350px) {
+    .btns-row {
+        right: 34%;
+    }
+
+    .width100 {
+        width: 100px;
+        height: 20px;
+    }
+
+    .width-arrow-keyes {
+        width: 72px;
+    }
+
+    .instructions-text {
+        height: 14px;
     }
 }
 
@@ -315,5 +421,24 @@ canvas {
     canvas {
         width: 100%;
         height: 100vh;
+    }
+    .instruction-column{
+        display: none;
+    }
+}
+
+/* Galaxy Fold */
+@media (max-width:300px) {
+    .instructions-text {
+        height: 12px;
+    }
+
+    .btns-row img {
+        width: 80px;
+        height: 24px;
+    }
+
+    .heading {
+        margin-top: -150px;
     }
 }

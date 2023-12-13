@@ -28,8 +28,15 @@ class MovableObject extends DrawableObject {
         return this.positionY < 390;
     }
     
-    //character.isColliding(chicken);
+    //character.isColliding(pufferfish);
     isColliding(moveableObject) {
+        return this.positionX + this.width - 40 > moveableObject.positionX &&
+            this.positionY + this.height > moveableObject.positionY &&
+            this.positionX < moveableObject.positionX &&
+            this.positionY < moveableObject.positionY + moveableObject.height;
+    }
+
+    isThrowableColliding(moveableObject) {
         return this.positionX + this.width > moveableObject.positionX &&
             this.positionY + this.height > moveableObject.positionY &&
             this.positionX < moveableObject.positionX &&

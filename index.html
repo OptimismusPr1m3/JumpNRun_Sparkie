@@ -33,6 +33,18 @@
 </head>
 
 <body onload="initStartScreen()">
+    <section class="game-over-section" id="gameOver">
+        <div class="game-over-screen">
+            <div class="game-over-title">
+                <img src="sprites/6.Botones/Tittles/Game Over/Recurso 12.png" alt="">
+            </div>
+            <div class="row-game-over-btns">
+                <img id="restartButton" class="restart-btn" src="sprites/6.Botones/Try again/Recurso 17.png"
+                onclick="restartGame();">
+                <img src="sprites/6.Botones/Try again/Recurso 15.png" class="home-btn">
+            </div>
+        </div>
+    </section>
     <section id="instructionSection" class="instruction-section">
         <div class="heading">
             <img class="sharkie" src="sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png">
@@ -54,8 +66,7 @@
         </div>
         <div class="btns-row">
             <img id="startButton" src="sprites/6.Botones/Start/2.png" onclick="startGame();">
-            <img id="restartButton" src="sprites/6.Botones/Try again/Recurso 17.png" style="display: none;"
-                onclick="restartGame();">
+            
         </div>
     </section>
     <div class="instruction-column">

@@ -16,8 +16,8 @@ function init() {
 
 function initStartScreen() {
     canvas = document.getElementById('GameCanvas');
-    canvas.width = 1080;
-    canvas.height = 720;
+    //canvas.width = 1080;
+    //canvas.height = 720;
     setUpStartScreen(canvas);
 }
 
@@ -40,14 +40,20 @@ const intervallId = setInterval(() => {
 function startGame() {
     startScreen.stopDrawing = true;
     document.getElementById('startButton').style = 'display: none';
-    if (window.matchMedia('(orientation: landscape) and (max-width: 720px)').matches) {
-        document.getElementById('hudMovement').style = 'display: flex';
-    }
+    const listenToRotation = setInterval(() => {
+        if (window.matchMedia('(orientation: landscape) and (max-width: 720px)').matches) {
+            document.getElementById('hudMovement').style = 'display: flex';
+        } else {
+            document.getElementById('hudMovement').style = 'display: none';
+        }
+    }, 1000 / 60);
+    
 }
 
 function restartGame() {
     document.getElementById('restartButton').style = 'display: none';
     init();
+    startGame();
 }
 
 
