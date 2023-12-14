@@ -29,9 +29,15 @@ class World {
         if (!(this.character.isAlive)) {
             for (let i = 0; i < 999; i++) {
                 window.clearInterval(i);
-                document.getElementById('restartButton').style = 'display: block';
             }
+            this.setGameOverScreen();
         }
+        
+    }
+
+    setGameOverScreen() {
+        document.getElementById('gameOverSection').classList.remove('d-none');
+        document.getElementById('gameOverSection').classList.add('game-over-section-animation');
     }
 
     run() {

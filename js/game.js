@@ -47,13 +47,18 @@ function startGame() {
             document.getElementById('hudMovement').style = 'display: none';
         }
     }, 1000 / 60);
-    
+
 }
 
 function restartGame() {
-    document.getElementById('restartButton').style = 'display: none';
+    document.getElementById('gameOverSection').classList.add('d-none');
+    document.getElementById('gameOverSection').classList.remove('game-over-section-animation');
     init();
     startGame();
+}
+
+function backToMenu() {
+    window.location = 'index.html';
 }
 
 

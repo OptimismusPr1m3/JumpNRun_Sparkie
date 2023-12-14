@@ -133,7 +133,7 @@ canvas {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .game-over-section {
@@ -148,6 +148,7 @@ canvas {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
 }
 
 .game-over-screen {
@@ -167,11 +168,58 @@ canvas {
 }
 
 .restart-btn {
+    height: 80px;
     margin-right: 48px;
+    opacity: 0;
 }
 
 .home-btn {
+    height: 80px;
     margin-left: 48px;
+    opacity: 0;
+}
+
+.game-over {
+    height: 150px;
+}
+
+.game-over-section-animation {
+    animation: fadeInSection 2s forwards;
+}
+
+@keyframes fadeInSection {
+    from{opacity: 0;}
+    to{opacity: 1;}
+    
+}
+
+.game-over-text-animation {
+    animation: sizeIn 2s linear;
+}
+
+@keyframes sizeIn {
+    from {height: 1px;}
+    to {height: 150px;}
+}
+
+.try-again-animation {
+    animation: slideInLeft 2s forwards;
+    animation-delay: 3s;
+}
+
+@keyframes slideInLeft {
+    from {margin-right: 348px; opacity: 0;}
+    to {margin-right: 48px; opacity: 1;}
+}
+
+.menu-button-animation {
+    animation: slideInRight 2s forwards;
+    animation-delay: 3s;
+}
+
+@keyframes slideInRight {
+    from {margin-left: 348px; opacity: 0;}
+    to {margin-left: 48px; opacity: 1;}
 }
 
 @font-face {
