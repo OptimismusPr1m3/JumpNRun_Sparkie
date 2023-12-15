@@ -41,13 +41,17 @@ function startGame() {
     startScreen.stopDrawing = true;
     document.getElementById('startButton').style = 'display: none';
     const listenToRotation = setInterval(() => {
-        if (window.matchMedia('(orientation: landscape) and (max-width: 720px)').matches) {
-            document.getElementById('hudMovement').style = 'display: flex';
-        } else {
-            document.getElementById('hudMovement').style = 'display: none';
-        }
+        checkIfMobile();
     }, 1000 / 60);
 
+}
+
+function checkIfMobile() {
+    if (window.matchMedia('(orientation: landscape) and (max-width: 920px)').matches) {
+        document.getElementById('hudMovement').style = 'display: flex';
+    } else {
+        document.getElementById('hudMovement').style = 'display: none';
+    }
 }
 
 function restartGame() {
