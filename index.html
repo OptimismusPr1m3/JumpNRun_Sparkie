@@ -36,11 +36,14 @@
     <section id="gameOverSection" class="game-over-section d-none">
         <div class="game-over-screen">
             <div class="game-over-title">
-                <img id="gameOverText" class="game-over game-over-text-animation" src="sprites/6.Botones/Tittles/Game Over/Recurso 12.png" alt="">
+                <img id="gameOverText" class="game-over game-over-text-animation"
+                    src="sprites/6.Botones/Tittles/Game Over/Recurso 12.png" alt="">
             </div>
             <div class="row-game-over-btns">
-                <img id="restartButton" class="restart-btn try-again-animation" src="sprites/6.Botones/Try again/Recurso 17.png" onclick="restartGame();">
-                <img id="menuButton" class="home-btn menu-button-animation" src="sprites/6.Botones/Try again/back to menu.png" onclick="backToMenu()">
+                <img id="restartButton" class="restart-btn try-again-animation"
+                    src="sprites/6.Botones/Try again/Recurso 17.png" onclick="restartGame();">
+                <img id="menuButton" class="home-btn menu-button-animation"
+                    src="sprites/6.Botones/Try again/back to menu.png" onclick="backToMenu()">
             </div>
         </div>
     </section>
@@ -52,6 +55,10 @@
         </div>
     </section>
     <section id="game" class="game">
+        <div class="top-left-btns">
+            <img onclick="toggleInstructions()" style="height: 32px;" src="sprites/6.Botones/Try again/info.png" alt="Instructions">
+            <img onclick="toggleFullscreen()" style="height: 42px; margin-left: 16px;" src="sprites/6.Botones/Try again/fullscreen.png" alt="Fullscreen">
+        </div>
         <canvas id="GameCanvas" width="1080" height="720"></canvas>
         <div id="hudMovement" class="hud-movement">
             <div class="hud-element">
@@ -65,10 +72,10 @@
         </div>
         <div class="btns-row">
             <img id="startButton" src="sprites/6.Botones/Start/2.png" onclick="startGame();">
-            
+
         </div>
     </section>
-    <div class="instruction-column">
+    <div id="instructions" class="instruction-column">
         <div class="instructions">
             <div class="row-instructions">
                 <img class="width-arrow-keyes" src="sprites/6.Botones/Key/arrow keys.png" alt="arrow-keyes">

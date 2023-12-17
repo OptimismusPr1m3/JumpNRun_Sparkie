@@ -65,4 +65,10 @@ function backToMenu() {
     window.location = 'index.html';
 }
 
+function toggleInstructions() {
+    document.getElementById('instructions').classList.toggle('d-none');
+}
 
+function toggleFullscreen() {
+    canvas.requestFullscreen();
+}

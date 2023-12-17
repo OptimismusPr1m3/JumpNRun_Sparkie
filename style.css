@@ -187,6 +187,15 @@ canvas {
     animation: fadeInSection 2s forwards;
 }
 
+.top-left-btns {
+    display: flex;
+    z-index: 500;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: -60px;
+    margin-right: 24px;
+}
+
 @keyframes fadeInSection {
     from{opacity: 0;}
     to{opacity: 1;}
@@ -275,6 +284,21 @@ canvas {
         margin: -85px 0;
     }
 }
+
+/*@media (max-height: 858px) {
+    canvas {
+        height: 680px;
+    }
+    .heading {
+        justify-content: center;
+    }
+    .endB {
+        display: none;
+    }
+    .sharkie {
+        display: none;
+    }
+}*/
 
 @media (max-height: 1080px) and (max-width: 800px) {
     .instructions {
