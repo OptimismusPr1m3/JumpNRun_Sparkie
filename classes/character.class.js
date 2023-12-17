@@ -2,6 +2,7 @@
 class Character extends MovableObject {
     positionY = 390; //390 vorher
     hp = 100;
+    ///currentAttackImage = 0;
     IMAGES_IDLE = [
         'sprites/1.Sharkie/1.IDLE/1.png',
         'sprites/1.Sharkie/1.IDLE/2.png',
@@ -89,6 +90,7 @@ class Character extends MovableObject {
             this.moveCharacter();
         }, 1000 / 60);
         let i = 0;
+        let j = 0;
         setInterval(() => {
             if (this.isDead() && i < 12) {
                 this.playAnimation(this.IMAGES_DEAD)
@@ -101,7 +103,25 @@ class Character extends MovableObject {
                 this.playMovementAnimations();
             }
         }, 150);
+        setInterval(() => {
+            if (this.isThrowingBubble && j < 8) {
+                this.playAnimation(this.IMAGES_ATTACKING);
+                j++
+                console.log(j)
+                if (j == 8) {
+                    this.spawnBubble = true;
+                    j=0;
+                }
+            }
+        }, 1000 / 10);
     }
+
+    /*playAttackAnimation(imagesArray) {
+        let i = this.currentAttackImage % imagesArray.length;  // let i = 7 % 6; => 1, Rest 1
+        let path = imagesArray[i];
+        this.img = this.imageCache[path];
+        this.currentAttackImage++;
+    }*/
 
     moveCharacter() {
         this.swimming_sound.pause();
@@ -127,7 +147,7 @@ class Character extends MovableObject {
         } else if (this.world.keyboard.LEFT && !this.isHurt() && this.isAlive || this.world.keyboard.RIGHT && !this.isHurt() && this.isAlive) {
             //swim Animation
             this.playAnimation(this.IMAGES_SWIMMING);
-        } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && this.isAlive && !this.isHurt()) {
+        } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && this.isAlive && !this.isHurt() && !this.isThrowingBubble) {
             this.playAnimation(this.IMAGES_IDLE);
         }
     }

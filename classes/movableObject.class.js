@@ -12,6 +12,8 @@ class MovableObject extends DrawableObject {
     isDamagingPlayer = false;
     isAttacking = false;
     isGameOver = false;
+    isThrowingBubble = false;
+    spawnBubble = false;
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -58,7 +60,7 @@ class MovableObject extends DrawableObject {
     }
 
     playAnimation(imagesArray) {
-        let i = this.currentImage % imagesArray.length;  // let i = / % 6; => 1, Rest 1
+        let i = this.currentImage % imagesArray.length;  // let i = 7 % 6; => 1, Rest 1
         let path = imagesArray[i];
         this.img = this.imageCache[path];
         this.currentImage++;

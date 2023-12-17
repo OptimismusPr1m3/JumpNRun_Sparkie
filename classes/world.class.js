@@ -10,7 +10,8 @@ class World {
     statusBar = new HealthBar(10, 45);
     poisonBar = new PoisonBar(5, -5);
     coinBar = new CoinBar(10, 100);
-    throwableObejcts = []
+    throwableObejcts = [];
+    imagesAmount = 0;
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -32,7 +33,7 @@ class World {
             }
             this.setGameOverScreen();
         }
-        
+
     }
 
     setGameOverScreen() {
@@ -49,7 +50,8 @@ class World {
             this.checkThrownObjects();
             this.checkCollectingPotions();
             this.checkCollectingCoins();
-        }, 200);
+            this.checkIfAttackAnimationisCompleted();
+        }, 150);
         setInterval(() => {
             this.checkThrownObjectsCollidingEnemy();
             this.checkIfThrownObjectIsMoving();
@@ -58,16 +60,20 @@ class World {
     }
 
     checkThrownObjects() {
-        if (this.keyboard.SPACE && this.character.amountOfP !== 0) {
+        if (!this.character.isThrowingBubble && this.keyboard.SPACE && this.character.amountOfP !== 0) {
+            this.character.isThrowingBubble = true;
+        }
+    }
+
+    checkIfAttackAnimationisCompleted() {
+        if (this.character.spawnBubble) {
             let bubble = new ThrowableObject(this.character.positionX + 150, this.character.positionY + 150);
             this.throwableObejcts.push(bubble);
             this.character.isThrowing();
-            if (this.throwableObejcts) {
-                this.character.hasThrown = true;
-            }
             this.poisonBar.setPercentage(this.character.amountOfP)
+            this.character.spawnBubble = false;
+            this.character.isThrowingBubble = false;
             console.log(this.character.amountOfP)
-
         }
     }
 
