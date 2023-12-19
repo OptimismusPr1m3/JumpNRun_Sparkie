@@ -56,6 +56,7 @@ class World {
             this.checkThrownObjectsCollidingEnemy();
             this.checkIfThrownObjectIsMoving();
             this.checkIfEnemyIsNearPlayer();
+            this.checkIfEnemyIsDead();
         }, 5);
     }
 
@@ -85,12 +86,21 @@ class World {
                 if (bubble.isThrowableColliding(enemy)) {
                     enemy.hit();
                     if (enemy.hp == 0) {
-                        this.level.enemies.splice(i, 1);
+                        enemy.isDeadlyHurt = true;
+                        //this.level.enemies.splice(i, 1);
                     }
                     this.throwableObejcts.splice(j, 1);
                 }
             }
         }
+    }
+
+    checkIfEnemyIsDead() {
+        this.level.enemies.forEach((enemy, index) => {
+            if (enemy.isKilled) {
+                this.level.enemies.splice(index, 1);
+            }
+        })
     }
 
     checkIfThrownObjectIsMoving() {

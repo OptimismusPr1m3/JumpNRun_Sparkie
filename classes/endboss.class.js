@@ -5,6 +5,7 @@ class Endboss extends MovableObject {
     hp = 80;
     hadFirstContact = false;
     isHitFromSharkie = false;
+    canIdle = true;
     IMAGES_IDLING = [
         'sprites/2.Enemy/3 Final Enemy/2.floating/1.png',
         'sprites/2.Enemy/3 Final Enemy/2.floating/2.png',
@@ -50,13 +51,22 @@ class Endboss extends MovableObject {
         'sprites/2.Enemy/3 Final Enemy/Attack/6.png',
     ]
 
+    IMAGES_DEAD = [
+        'sprites/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 6.png',
+        'sprites/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 7.png',
+        'sprites/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 8.png',
+        'sprites/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
+        'sprites/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png'
+    ]
+
     constructor() {
         super().loadImage(this.IMAGES_IDLING[0]);
         this.loadImages(this.IMAGES_IDLING);
         this.loadImages(this.IMAGES_INTRODUCTION);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_ATTACKING);
-        this.positionX = 1800;
+        this.loadImages(this.IMAGES_DEAD);
+        this.positionX = 1900;
         this.animate();
     }
 
@@ -67,7 +77,7 @@ class Endboss extends MovableObject {
             //console.log(world.character.positionX)
             if (i < 10) {
                 this.playAnimation(this.IMAGES_INTRODUCTION);
-            } else {
+            } else if (i >= 10 && !this.isDeadlyHurt && !this.isKilled && this.canIdle) {
                 this.playAnimation(this.IMAGES_IDLING)
             }
             i++;
@@ -75,12 +85,27 @@ class Endboss extends MovableObject {
                 i = 0;
                 this.hadFirstContact = true;
             }
-            if (this.isHurt()) {
+            if (this.isHurt() && !this.isDeadlyHurt && !this.isKilled) {
                 this.playAnimation(this.IMAGES_HURT);
             }
-            if (this.isDamagingPlayer) {
+            if (this.isDamagingPlayer && !this.isDeadlyHurt && !this.isKilled) {
                 this.playAnimation(this.IMAGES_ATTACKING);
             }
         }, 140);
+        let deadCounter = 0;
+        setInterval(() => {
+            if (this.isDeadlyHurt) {
+                this.playAnimation(this.IMAGES_DEAD)
+                deadCounter++;
+                if (deadCounter == 5) {
+                    this.isDeadlyHurt = false;
+                    this.canIdle = false;
+                    this.loadImage(this.IMAGES_DEAD[4]);
+                    setTimeout(() => {
+                        this.isKilled = true;
+                    }, 1500);
+                }
+            }
+        }, 250);
     }
 }

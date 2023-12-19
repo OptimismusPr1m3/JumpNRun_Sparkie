@@ -14,6 +14,8 @@ class MovableObject extends DrawableObject {
     isGameOver = false;
     isThrowingBubble = false;
     spawnBubble = false;
+    isKilled = false;
+    isDeadlyHurt = false;
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
