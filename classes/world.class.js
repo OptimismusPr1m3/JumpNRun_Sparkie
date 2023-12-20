@@ -57,7 +57,28 @@ class World {
             this.checkIfThrownObjectIsMoving();
             this.checkIfEnemyIsNearPlayer();
             this.checkIfEnemyIsDead();
+            this.checkPlayerPosition();
         }, 5);
+    }
+
+    checkPlayerPosition() {
+        this.level.enemies.forEach((enemy) =>{
+            if (enemy instanceof Endboss) {
+                this.calculateDistance(enemy);
+            }
+        }); 
+    }
+
+    calculateDistance (obj) {
+        let distance = this.character.positionX - obj.positionX;
+        if (distance < 0 && obj.hadFirstContact) {
+            console.log(distance);
+            obj.isBeforePlayer = true;
+            obj.isBehindPlayer = false;
+        } else {
+            obj.isBeforePlayer = false;
+            obj.isBehindPlayer = true;
+        }
     }
 
     checkThrownObjects() {
@@ -195,34 +216,12 @@ class World {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
-        // this.testJumpFunc(mo); // Test function for klick event handling
         mo.draw(this.ctx)
         mo.showHitbox(this.ctx)
         if (mo.otherDirection) {
             this.flipImageBack(mo);
         }
     }
-
-    /* Test Funtion for click event handling maybe using it for later mute button and fullscreen switch ;-)
-    testJumpFunc(mo) {
-        if (mo instanceof Character) {
-            this.canvas.addEventListener('click', (event) => {
-                const canvasRect = this.canvas.getBoundingClientRect();
-                const clickX = event.clientX - canvasRect.left;
-                const clickY = event.clientY - canvasRect.top;
-    
-                if (
-                    clickX >= mo.positionX + this.camera_x &&
-                    clickX <= mo.positionX + mo.width + this.camera_x &&
-                    clickY >= mo.positionY &&
-                    clickY <= mo.positionY + mo.height &&
-                    mo.isAlive
-                ) {
-                    mo.jump();
-                }
-            });
-        }
-    }*/
 
     flipImage(moveableObject) {
         this.ctx.save();

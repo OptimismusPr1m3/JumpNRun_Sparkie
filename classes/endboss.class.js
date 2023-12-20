@@ -6,6 +6,8 @@ class Endboss extends MovableObject {
     hadFirstContact = false;
     isHitFromSharkie = false;
     canIdle = true;
+    isBehindPlayer = false;
+    isBeforePlayer = true;
     IMAGES_IDLING = [
         'sprites/2.Enemy/3 Final Enemy/2.floating/1.png',
         'sprites/2.Enemy/3 Final Enemy/2.floating/2.png',
@@ -67,6 +69,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_ATTACKING);
         this.loadImages(this.IMAGES_DEAD);
         this.positionX = 1900;
+        this.speed = 2.5;
         this.animate();
     }
 
@@ -107,5 +110,17 @@ class Endboss extends MovableObject {
                 }
             }
         }, 250);
+        setInterval(() => {
+            this.moveBoss();
+        }, 1000 / 60);
+    }
+    moveBoss() {
+        if (this.isBehindPlayer && !this.isKilled && !this.isDamagingPlayer && !this.isHurt() && !this.isDeadlyHurt && this.canIdle) {
+            this.otherDirection = true;
+            this.moveRight();
+        } else if (this.isBeforePlayer && !this.isKilled && !this.isDamagingPlayer && !this.isHurt() && !this.isDeadlyHurt && this.canIdle) {
+            this.otherDirection = false;
+            this.moveLeft();
+        }
     }
 }

@@ -51,9 +51,7 @@ class PufferFish extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (!this.isPlayerNeard) {
-                this.moveLeft();
-            }
+            this.moveLeft();
         }, 1000 / 60); // 1000 / 25 = 25 FPS , 1000 / 60 = 60 FPS !
         let imageCounter = 0;
         setInterval(() => {
