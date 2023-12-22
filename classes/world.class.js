@@ -27,24 +27,50 @@ class World {
     }
 
     clearAllIntervalls() {
+        this.checkIfPlayerIsDead();
+        this.checkIfPlayerWins();
+    }
+
+    checkIfPlayerIsDead() {
         if (!(this.character.isAlive)) {
             for (let i = 0; i < 999; i++) {
                 window.clearInterval(i);
             }
             this.setGameOverScreen();
         }
+    }
 
+    checkIfPlayerWins() {
+        this.level.enemies.forEach((enemy) => {
+            if (enemy instanceof Endboss) {
+                if (enemy.isKilled) {
+                    for (let i = 0; i < 999; i++) {
+                        window.clearInterval(i);
+                    }
+                    this.setYouWinScreen();
+                }
+            }
+        })
+    }
+
+    setYouWinScreen() {
+        document.getElementById('gameOverSection').classList.remove('d-none');
+        document.getElementById('gameOverSection').classList.add('game-over-section-animation');
+        document.getElementById('winTitle').classList.remove('d-none');
+        document.getElementById('gameOverText').classList.add('d-none');
     }
 
     setGameOverScreen() {
         document.getElementById('gameOverSection').classList.remove('d-none');
         document.getElementById('gameOverSection').classList.add('game-over-section-animation');
+        document.getElementById('gameOverText').classList.remove('d-none');
+        document.getElementById('winTitle').classList.add('d-none');
     }
 
     run() {
         setInterval(() => {
             this.checkCollisions();
-            this.clearAllIntervalls();
+            
         }, 1000)
         setInterval(() => {
             this.checkThrownObjects();
@@ -53,6 +79,7 @@ class World {
             this.checkIfAttackAnimationisCompleted();
         }, 150);
         setInterval(() => {
+            this.clearAllIntervalls();
             this.checkThrownObjectsCollidingEnemy();
             this.checkIfThrownObjectIsMoving();
             this.checkIfEnemyIsNearPlayer();

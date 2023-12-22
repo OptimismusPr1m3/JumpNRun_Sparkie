@@ -36,8 +36,12 @@
     <section id="gameOverSection" class="game-over-section d-none">
         <div class="game-over-screen">
             <div class="game-over-title">
-                <img id="gameOverText" class="game-over game-over-text-animation"
-                    src="sprites/6.Botones/Tittles/Game Over/Recurso 12.png" alt="">
+                <img id="gameOverText" class="game-over game-over-text-animation d-none"
+                    src="sprites/6.Botones/Tittles/Game Over/Recurso 12.png">
+            </div>
+            <div class="game-over-title">
+                <img id="winTitle" class="game-over game-over-text-animation d-none"
+                    src="sprites/6.Botones/Tittles/You win/Recurso 21.png">
             </div>
             <div class="row-game-over-btns">
                 <img id="restartButton" class="restart-btn try-again-animation"
@@ -56,8 +60,10 @@
     </section>
     <section id="game" class="game">
         <div class="top-left-btns">
-            <img onclick="toggleInstructions()" style="height: 32px;" src="sprites/6.Botones/Try again/info.png" alt="Instructions">
-            <img onclick="toggleFullscreen()" style="height: 42px; margin-left: 16px;" src="sprites/6.Botones/Try again/fullscreen.png" alt="Fullscreen">
+            <img onclick="toggleInstructions()" class="info-btn" src="sprites/6.Botones/Try again/info.png"
+                alt="Instructions">
+            <img onclick="toggleFullscreen()" class="fullscreen-btn"
+                src="sprites/6.Botones/Try again/fullscreen.png" alt="Fullscreen">
         </div>
         <canvas id="GameCanvas" width="1080" height="720"></canvas>
         <div id="hudMovement" class="hud-movement">

@@ -187,6 +187,15 @@ canvas {
     animation: fadeInSection 2s forwards;
 }
 
+.info-btn {
+    height: 32px;
+}
+
+.fullscreen-btn {
+    height: 42px;
+    margin-left: 16px;
+}
+
 .top-left-btns {
     display: flex;
     z-index: 500;
@@ -367,6 +376,19 @@ canvas {
     .instructions-text {
         margin-top: 8px;
     }
+    .game-over {
+        height: 80px;
+    }
+    .home-btn {
+        height: 40px;
+    }
+    .restart-btn {
+        height: 40px;
+    }
+    @keyframes sizeIn {
+        from {height: 1px;}
+        to {height: 80px;}
+    }
 }
 
 @media (max-width: 900px) {
@@ -427,11 +449,44 @@ canvas {
     .btns-row {
         right: 35%;
     }
+    .game-over {
+        height: 60px;
+    }
+    .home-btn {
+        height: 32px;
+    }
+    .restart-btn {
+        height: 32px;
+    }
+    @keyframes sizeIn {
+        from {height: 1px;}
+        to {height: 60px;}
+    }
+    .info-btn {
+        height: 24px;
+    }
+    
+    .fullscreen-btn {
+        height: 32px;
+    }
 }
 
 @media (max-width: 550px) {
     .btns-row {
         right: 33%;
+    }
+    .game-over {
+        height: 50px;
+    }
+    .home-btn {
+        height: 28px;
+    }
+    .restart-btn {
+        height: 28px;
+    }
+    @keyframes sizeIn {
+        from {height: 1px;}
+        to {height: 50px;}
     }
 }
 
@@ -444,6 +499,7 @@ canvas {
     .btns-row {
         right: 36%;
     }
+    
 }
 
 @media (max-width: 450px) {
@@ -467,6 +523,25 @@ canvas {
 
     h1 {
         font-size: 48px;
+    }
+    .game-over {
+        height: 40px;
+    }
+    .home-btn {
+        height: 24px;
+    }
+    .restart-btn {
+        height: 24px;
+    }
+    @keyframes sizeIn {
+        from {height: 1px;}
+        to {height: 40px;}
+    }
+    .info-btn {
+        height: 20px;
+    }
+    .fullscreen-btn {
+        height: 26px;
     }
 }
 
@@ -513,7 +588,7 @@ canvas {
 }
 
 /* Galaxy Fold */
-@media (max-width:300px) {
+@media (max-width:303px) {
     .instructions-text {
         height: 12px;
     }
@@ -525,5 +600,18 @@ canvas {
 
     .heading {
         margin-top: -150px;
+    }
+    .game-over {
+        height: 30px;
+    }
+    .home-btn {
+        height: 18px;
+    }
+    .restart-btn {
+        height: 18px;
+    }
+    @keyframes sizeIn {
+        from {height: 1px;}
+        to {height: 30px;}
     }
 }
