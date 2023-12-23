@@ -16,6 +16,10 @@ class MovableObject extends DrawableObject {
     spawnBubble = false;
     isKilled = false;
     isDeadlyHurt = false;
+    offsetRight = 40;
+    offsetLeft = 20;
+    offsetBottom = 5;
+    offsetTop = 50;
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -31,14 +35,23 @@ class MovableObject extends DrawableObject {
     isAboveGround() {
         return this.positionY < 390;
     }
-    
+    /*
     //character.isColliding(pufferfish);
     isColliding(moveableObject) {
         return this.positionX + this.width - 40 > moveableObject.positionX &&
             this.positionY + this.height > moveableObject.positionY &&
             this.positionX < moveableObject.positionX &&
             this.positionY < moveableObject.positionY + moveableObject.height;
+    }*/
+
+    
+    isColliding(moveableObject) {
+        return this.positionX + this.width - this.offsetRight > moveableObject.positionX + moveableObject.offsetLeft &&
+            this.positionY + this.height - this.offsetBottom > moveableObject.positionY + moveableObject.offsetTop &&
+            this.positionX + this.offsetLeft < moveableObject.positionX - moveableObject.offsetRight &&
+            this.positionY + this.offsetTop < moveableObject.positionY + moveableObject.height - moveableObject.offsetBottom;
     }
+    
 
     isThrowableColliding(moveableObject) {
         return this.positionX + this.width > moveableObject.positionX &&

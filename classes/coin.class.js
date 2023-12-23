@@ -6,6 +6,8 @@ class Coin extends MovableObject {
         'sprites/4. Marcadores/1. Coins/4.png',
     ]
     width = 60;
+    offsetBottom = 30;
+    offsetTop = 30;
     height = 60;
     constructor(posX, posY) {
         super().loadImage(this.IMAGES[0])
