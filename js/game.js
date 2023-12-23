@@ -5,19 +5,13 @@ let keyboard = new KeyBoard();
 
 
 function init() {
-    //removeInstructionsScreen();
     initLevel1();
     canvas = document.getElementById('GameCanvas');
-    //canvas.style.display = 'flex';
-    //canvas.width = canvas.offsetWidth;
-    //canvas.height = canvas.offsetHeight;
     world = new World(canvas, keyboard);
 }
 
 function initStartScreen() {
     canvas = document.getElementById('GameCanvas');
-    //canvas.width = 1080;
-    //canvas.height = 720;
     setUpStartScreen(canvas);
 }
 
@@ -32,10 +26,6 @@ const intervallId = setInterval(() => {
         init();
     }
 }, 10);
-
-//window.addEventListener('load', checkOrientation);
-
-//window.addEventListener('orientationchange', checkOrientation);
 
 function startGame() {
     startScreen.stopDrawing = true;

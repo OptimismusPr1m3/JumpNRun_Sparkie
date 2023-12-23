@@ -135,7 +135,6 @@ class World {
                     enemy.hit();
                     if (enemy.hp == 0) {
                         enemy.isDeadlyHurt = true;
-                        //this.level.enemies.splice(i, 1);
                     }
                     this.throwableObejcts.splice(j, 1);
                 }
@@ -190,14 +189,9 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                //console.log('Collision with character:', enemy)
                 enemy.isDamagingPlayer = true;
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.hp);
-                if (this.character.hp == 0) {
-                    //this.character.isAlive = false;
-                }
-                //console.log("Leben des Characters:", this.character.hp)
             } else {
                 enemy.isDamagingPlayer = false;
             };
@@ -226,7 +220,7 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0)
 
-        //Draw() wird immer aufgerufen
+        //Draw() calls itself over and over
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
