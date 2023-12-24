@@ -73,6 +73,7 @@ class World {
             
         }, 1000)
         setInterval(() => {
+            this.checkIfMeleeAttack();
             this.checkThrownObjects();
             this.checkCollectingPotions();
             this.checkCollectingCoins();
@@ -83,6 +84,7 @@ class World {
             this.checkThrownObjectsCollidingEnemy();
             this.checkIfThrownObjectIsMoving();
             this.checkIfEnemyIsNearPlayer();
+            this.checkFinSlapNearEnemy();
             this.checkIfEnemyIsDead();
             this.checkPlayerPosition();
         }, 5);
@@ -112,6 +114,29 @@ class World {
         if (!this.character.isThrowingBubble && this.keyboard.SPACE && this.character.amountOfP !== 0) {
             this.character.isThrowingBubble = true;
         }
+    }
+
+    checkIfMeleeAttack() {
+        if (this.keyboard.MELEE) {
+            this.character.isSlapping = true;
+        }
+    }
+
+    checkFinSlapNearEnemy() {
+        this.level.enemies.forEach((enemy) => {
+            if (enemy instanceof PufferFish) {
+                const distance = this.character.positionX - enemy.positionX;
+                if (distance > -250 && this.character.hasSlapped) {
+                    this.character.hasSlapped = false;
+                    enemy.isDeadlyHurt = true;
+                    console.log(distance)
+                }else {
+                    setTimeout(() => {
+                        this.character.hasSlapped = false;
+                    }, 300);
+                }
+            }
+        })
     }
 
     checkIfAttackAnimationisCompleted() {

@@ -4,6 +4,7 @@ class KeyBoard{
     UP = false;
     DOWN = false;
     SPACE = false;
+    MELEE = false;
 
     constructor() {
         this.handleButtonsDesktop();
@@ -22,6 +23,8 @@ class KeyBoard{
                     break;
                 case 'd': this.RIGHT = true;
                     break;
+                case 'f': this.MELEE = true;
+                    break;
                 case ' ': this.SPACE = true;
                 default:
                     break;
@@ -37,6 +40,8 @@ class KeyBoard{
                 case 'a': this.LEFT = false;
                     break;
                 case 'd': this.RIGHT = false;
+                    break;
+                case 'f': this.MELEE = false;
                     break;
                 case ' ': this.SPACE = false;
                 default:
@@ -77,6 +82,14 @@ class KeyBoard{
         document.getElementById('attackBtn').addEventListener("touchend", (event) => {
             event.preventDefault();
             this.SPACE = false;
+        })
+        document.getElementById('meleeAttackBtn').addEventListener("touchstart", (event) => {
+            event.preventDefault();
+            this.MELEE = true;
+        })
+        document.getElementById('meleeAttackBtn').addEventListener("touchend", (event) => {
+            event.preventDefault();
+            this.MELEE = false;
         })
     }
 }

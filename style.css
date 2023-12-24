@@ -72,7 +72,7 @@ canvas {
 }
 
 .instructions-text {
-    height: 48px;
+    height: 70px;
     margin-left: 32px;
     margin-right: 32px;
 }
@@ -205,6 +205,10 @@ canvas {
     margin-right: 24px;
 }
 
+.d-key {
+    height: 60px;
+}
+
 @keyframes fadeInSection {
     from{opacity: 0;}
     to{opacity: 1;}
@@ -280,7 +284,7 @@ canvas {
     }
 
     .instructions-text {
-        height: 26px;
+        height: 40px;
     }
 
     .width-arrow-keyes {
@@ -326,7 +330,7 @@ canvas {
     }
 
     .instructions-text {
-        height: 32px;
+        height: 48px;
     }
 
     .width100 {
@@ -439,7 +443,7 @@ canvas {
     }
 
     .instructions-text {
-        height: 24px;
+        height: 36px;
     }
 
     .instructions {

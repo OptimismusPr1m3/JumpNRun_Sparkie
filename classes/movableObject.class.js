@@ -1,7 +1,7 @@
 class MovableObject extends DrawableObject {
     hp;
     isAlive = true;
-    otherDIrection = false;
+    otherDirection = false;
     swimming_sound;
     speedY = 0;
     acceleration = 0.6;
@@ -9,6 +9,8 @@ class MovableObject extends DrawableObject {
     amountOfC = 0;
     isJumping;
     lastHit = 0;
+    isSlapping = false;
+    hasSlapped = false;
     isDamagingPlayer = false;
     isAttacking = false;
     isGameOver = false;
@@ -35,16 +37,8 @@ class MovableObject extends DrawableObject {
     isAboveGround() {
         return this.positionY < 390;
     }
-    /*
-    //character.isColliding(pufferfish);
-    isColliding(moveableObject) {
-        return this.positionX + this.width - 40 > moveableObject.positionX &&
-            this.positionY + this.height > moveableObject.positionY &&
-            this.positionX < moveableObject.positionX &&
-            this.positionY < moveableObject.positionY + moveableObject.height;
-    }*/
 
-    
+    //character.isColliding(pufferfish)
     isColliding(moveableObject) {
         return this.positionX + this.width - this.offsetRight > moveableObject.positionX + moveableObject.offsetLeft &&
             this.positionY + this.height - this.offsetBottom > moveableObject.positionY + moveableObject.offsetTop &&
