@@ -87,7 +87,7 @@ class World {
             this.checkFinSlapNearEnemy();
             this.checkIfEnemyIsDead();
             this.checkPlayerPosition();
-        }, 5);
+        }, 1);
     }
 
     checkPlayerPosition() {
@@ -125,15 +125,16 @@ class World {
     checkFinSlapNearEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (enemy instanceof PufferFish) {
+                console.log(enemy);
                 const distance = this.character.positionX - enemy.positionX;
-                if (distance > -250 && this.character.hasSlapped) {
+                if (distance > -300 && this.character.hasSlapped) {
                     this.character.hasSlapped = false;
                     enemy.isDeadlyHurt = true;
                     console.log(distance)
                 }else {
                     setTimeout(() => {
                         this.character.hasSlapped = false;
-                    }, 300);
+                    }, 100);
                 }
             }
         })
