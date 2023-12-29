@@ -58,11 +58,12 @@ canvas {
 
 .instructions {
     display: flex;
-    flex-direction: row;
+    width: 500px;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    margin: 48px 0;
-
+    justify-content: center;
+    margin-top: -300px;
+    border: 2px solid black;
 }
 
 .row-instructions {
@@ -88,7 +89,19 @@ canvas {
 .instruction-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
+}
+
+.next-back-btn {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.next-btn-back-Btn {
+    height: 48px;
+    margin: 16px;
 }
 
 .hud-movement {
@@ -270,12 +283,12 @@ canvas {
     }
 
     .instructions {
-        margin: -160px 0;
+        margin: -460px 0;
         justify-content: space-evenly;
     }
 
     .row-instructions {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .width100 {
