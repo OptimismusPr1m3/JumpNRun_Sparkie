@@ -62,7 +62,7 @@ canvas {
     height: 400px;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top: -500px;
     border: 4px solid #531a82;
     background-color: rgba(127, 255, 224, 0.5);
@@ -73,6 +73,7 @@ canvas {
     color: white;
     font-size: 28px;
     margin: 0px;
+    margin-top: 16px;
 }
 
 .row-instructions {
@@ -293,7 +294,6 @@ canvas {
 
     .instructions {
         margin: -460px 0;
-        justify-content: space-evenly;
     }
 
     .row-instructions {
@@ -301,8 +301,7 @@ canvas {
     }
 
     .width100 {
-        height: 60px;
-        width: 250px;
+        width: 128px;
     }
 
     .instructions-text {
@@ -311,34 +310,6 @@ canvas {
 
     .width-arrow-keyes {
         width: 150px;
-    }
-}
-
-@media (max-height: 1080px) and (max-width: 1080px) {
-    .instructions {
-        margin: -85px 0;
-    }
-}
-
-/*@media (max-height: 858px) {
-    canvas {
-        height: 680px;
-    }
-    .heading {
-        justify-content: center;
-    }
-    .endB {
-        display: none;
-    }
-    .sharkie {
-        display: none;
-    }
-}*/
-
-@media (max-height: 1080px) and (max-width: 800px) {
-    .instructions {
-        margin: 0 0;
-        margin-top: 40px;
     }
 }
 
@@ -353,10 +324,6 @@ canvas {
 
     .instructions-text {
         height: 40px;
-    }
-
-    .width100 {
-        width: 300px;
     }
 }
 
@@ -375,7 +342,7 @@ canvas {
     }
 
     .heading {
-        margin-top: -100px;
+        margin-top: -150px;
     }
 
     .endB {
@@ -398,7 +365,6 @@ canvas {
     }
 
     .instructions-text {
-        margin-top: 8px;
         margin-left: 18px;
         margin-right: 0;
     }
@@ -452,28 +418,41 @@ canvas {
     .heading {
         justify-content: center;
     }
+    .instructions {
+        width: 260px;
+        height: 300px;
+        margin-top: -400px;
+    }
+    .instructions-text {
+        height: 24px;
+    }
+    .width-arrow-keyes {
+        height: 60px;
+        width: auto;
+    }
+    .next-btn-back-Btn {
+        height: 32px;
+    }
+    .instructions h3 {
+        font-size: 24px;
+    }
+    .width100 {
+        width: 104px;
+    }
+    .d-key {
+        height: 40px;
+        margin-right: 38px;
+    }
+
 }
 
 @media (max-width: 650px) {
-    .width-arrow-keyes {
-        width: 132px;
-    }
-
-    .width100 {
-        width: 200px;
-        height: 40px;
-    }
-
-    .instructions-text {
-        height: 36px;
-    }
-
-    .instructions {
-        margin-top: 0;
-    }
-
     .btns-row {
         right: 35%;
+        top: 45%;
+    }
+    .instructions {
+        margin-top: -345px;
     }
     .game-over {
         height: 60px;
@@ -514,6 +493,31 @@ canvas {
         from {height: 1px;}
         to {height: 50px;}
     }
+    .instructions {
+        margin-top: -280px;
+        width: 200px;
+        height: 210px;
+    }
+    .width-arrow-keyes {
+        height: 40px;
+    }
+    .instructions-text {
+        height: 20px;
+    }
+    .instructions h3 {
+        font-size: 20px;
+    }
+    .next-btn-back-Btn {
+        height: 24px;
+
+    }
+    .width100 {
+        width: 72px;
+    }
+    .d-key {
+        height: 24px;
+        margin-right: 28px;
+    }
 }
 
 @media (max-width: 490px) {
@@ -534,17 +538,24 @@ canvas {
         height: 124px;
     }
 
-    .width100 {
-        width: 125px;
-        height: 24px;
-    }
-
-    .width-arrow-keyes {
-        width: 88px;
+    .instructions {
+        height: 186px;
+        width: 156px;
+        margin-top: -242px;
     }
 
     .instructions-text {
         height: 16px;
+        margin-left: 12px;
+    }
+
+    .width100 {
+        width: 60px;
+    }
+
+    .d-key {
+        height: 20px;
+        margin-right: 26px;
     }
 
     h1 {
@@ -569,24 +580,52 @@ canvas {
     .fullscreen-btn {
         height: 26px;
     }
+    .top-left-btns {
+        margin-bottom: -36px;
+        margin-right: 12px;
+        z-index: 200;
+    }
+    .btns-row {
+        z-index: 400;
+        top: 45%;
+    }
+}
+
+@media (max-width: 400px) {
+    .instructions {
+        width: 140px;
+        height: 160px;
+        margin-top: -214px;
+    }
+    .instructions-text {
+        margin-left: 6px;
+        height: 14px;
+    }
+    .next-btn-back-Btn {
+        height: 18px;
+        margin: 12px;
+    }
+    .instructions h3 {
+        font-size: 16px;
+        margin-top: 8px;
+    }
 }
 
 @media (max-width: 350px) {
     .btns-row {
         right: 34%;
     }
-
-    .width100 {
-        width: 100px;
-        height: 20px;
+    .instructions {
+        margin-top: -180px;
     }
-
-    .width-arrow-keyes {
-        width: 72px;
+    .info-btn {
+        height: 18px;
     }
-
-    .instructions-text {
-        height: 14px;
+    .fullscreen-btn {
+        height: 22px;
+    }
+    .top-left-btns {
+        margin-bottom: -30px;
     }
 }
 
@@ -595,9 +634,7 @@ canvas {
         width: 100%;
         height: 100vh;
     }
-    .instruction-column{
-        display: none;
-    }
+    
 }
 
 @media (max-width: 950px) and (max-height: 500px) {
@@ -639,5 +676,10 @@ canvas {
     @keyframes sizeIn {
         from {height: 1px;}
         to {height: 30px;}
+    }
+    .instructions {
+        height: 132px;
+        width: 129px;
+        margin-top: -174px;
     }
 }
