@@ -1,4 +1,5 @@
-class KeyBoard{
+class KeyBoard {
+
     RIGHT = false;
     LEFT = false;
     UP = false;
@@ -6,13 +7,24 @@ class KeyBoard{
     SPACE = false;
     MELEE = false;
 
+    /**
+     * Creates an instance of the KeyBoard - class and initializes desktop button handling.
+     */
     constructor() {
         this.handleButtonsDesktop();
     }
 
-
+    /**
+     * Handles keyboard events for desktop controls, updating corresponding flags based on key presses.
+     * 
+     */
     handleButtonsDesktop() {
-
+        /**
+         * Adds an event listener to the window for keydown events.
+         * 
+         * @param {string} type - A string representing the event type to listen for (in this case, "keydown").
+         * @param {EventListenerOrEventListenerObject} listener - The listener function or object to handle the event.
+         */
         window.addEventListener("keydown", (event) => {
             switch (event['key']) {
                 case 'w': this.UP = true;
@@ -30,8 +42,11 @@ class KeyBoard{
                     break;
             }
         });
-        
-        window.addEventListener("keyup", (event) =>{
+        /**
+         * @param {string} type - A string representing the event type to listen for (in this case, "keyup").
+         * @param {EventListenerOrEventListenerObject} listener - The listener function or object to handle the event.
+         */
+        window.addEventListener("keyup", (event) => {
             switch (event['key']) {
                 case 'w': this.UP = false;
                     break;
@@ -49,8 +64,15 @@ class KeyBoard{
             }
         })
     }
-
+    /**
+     * Handles touch events for mobile controls, updating corresponding flags based on touch interactions.
+     */
     handleButtonsMobile() {
+        /**
+         * Adds an event listener to the 'leftBtn' element for touchstart events.
+         * @param {string} type - A string representing the event type to listen for (in this case, "touchstart").
+         * @param {EventListenerOrEventListenerObject} listener - The listener function or object to handle the event.
+         */
         document.getElementById('leftBtn').addEventListener("touchstart", (event) => {
             event.preventDefault();
             this.LEFT = true;

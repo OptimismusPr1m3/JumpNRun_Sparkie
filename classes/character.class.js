@@ -1,5 +1,6 @@
 
 class Character extends MovableObject {
+
     positionY = 390;
     hp = 100;
     offsetTop = 100;
@@ -84,7 +85,9 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/5.Hurt/1.Poisoned/4.png',
         'sprites/1.Sharkie/5.Hurt/1.Poisoned/5.png',
     ];
-
+    /**
+     * Creates an instance of Sharkie character with initial properties and animations.
+     */
     constructor() {
         super().loadImage('sprites/1.Sharkie/1.IDLE/1.png')
         this.speed = 7;
@@ -99,7 +102,9 @@ class Character extends MovableObject {
         this.applyGravity();
         this.swimming_sound = new Audio('audio/swimming.mp3');
     };
-
+    /**
+     * Initiates animation loops for character movement, death checks, fin slap animation, and attack animation.
+     */
     animate() {
         setInterval(() => {
             this.moveCharacter();
@@ -112,7 +117,10 @@ class Character extends MovableObject {
             this.checkAttackAnimationAndThrowBubble();
         }, 1000 / 10);
     }
-
+    /**
+     * Checks and manages the attack animation state and triggers the bubble throwing action.
+     * Plays the attack animation and initiates the bubble throwing action when Sharkie is in the attack state.
+     */
     checkAttackAnimationAndThrowBubble() {
         if (this.isThrowingBubble && this.attackCounter < 8) {
             this.playAnimation(this.IMAGES_R_ATTACK);
@@ -123,12 +131,14 @@ class Character extends MovableObject {
             }
         }
     }
-
+    /**
+     * Checks and manages the fin slap animation state.
+     * Plays the fin slap animation and updates the state when Sharkie is in the fin slap action.
+     */
     checkFinSlapAnimation() {
         if (this.isSlapping && this.meleeCounter < 8) {
             this.playAnimation(this.IMAGES_M_ATTACK);
             this.meleeCounter++;
-            console.log(this.meleeCounter)
             if (this.meleeCounter == 4) {
                 this.isSlapping = false;
                 this.hasSlapped = true;
@@ -136,12 +146,15 @@ class Character extends MovableObject {
             }
         }
     }
-
+    /**
+     * Checks if Sharkie is dead and manages the death animation and state transition.
+     * Plays the death animation and updates the state when Sharkie is considered dead.
+     * Otherwise, plays movement animations.
+     */
     checkIfSharkieIsDead() {
         if (this.isDead() && this.deadCounter < 12) {
             this.playAnimation(this.IMAGES_DEAD)
             this.deadCounter++;
-            console.log(this.deadCounter)
             if (this.deadCounter == 12) {
                 this.isAlive = false;
             }
@@ -149,7 +162,10 @@ class Character extends MovableObject {
             this.playMovementAnimations();
         }
     }
-
+    /**
+     * Moves the character based on user input, including right, left, and upward movements.
+     * Manages character movement, direction, jumping, and updates the camera position. 
+     */
     moveCharacter() {
         this.swimming_sound.pause();
         if (this.world.keyboard.RIGHT && this.positionX < this.world.level.level_end_x && this.isAlive) {
@@ -166,6 +182,10 @@ class Character extends MovableObject {
         }
         this.world.camera_x = -this.positionX;
     }
+    /**
+     * Plays different movement animations based on the character's state and user input.
+     * Manages animations for hurt, swimming up, swimming, and idling.
+     */
     playMovementAnimations() {
         if (this.isHurt() && this.isAlive) {
             this.playAnimation(this.IMAGES_HURT)

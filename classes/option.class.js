@@ -3,6 +3,7 @@ class Option extends StatusBar {
     width = 50;
     isMuteBtn;
     isFullscreenSwitch;
+    
     constructor(img, posX, posY, isMuteBtn, isFullscreenSwitch){
         super().loadImage(img);
         this.positionX = posX;

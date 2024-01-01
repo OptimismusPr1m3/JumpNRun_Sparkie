@@ -1,5 +1,12 @@
 let level1;
 
+/**
+ * Initializes the first level of the game.
+ * 
+ * @description
+ * This function sets up the first level with specified entities, lights, floors, potions, and coins.
+ * The level includes PufferFish enemies and an Endboss. 
+ */
 function initLevel1() {
     level1 = new Level([
         new PufferFish(),
