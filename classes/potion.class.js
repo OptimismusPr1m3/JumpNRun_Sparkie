@@ -16,7 +16,7 @@ class Potion extends MovableObject{
     constructor(){
         super().loadImage(this.IMAGES[0]);
         this.loadImages(this.IMAGES);
-        this.positionX = 350 + Math.random() * 1500
+        this.positionX = 350 + Math.random() * 2800
         this.animate();
     }
 

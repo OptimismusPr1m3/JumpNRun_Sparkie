@@ -27,7 +27,12 @@ function initLevel1() {
             // third floor of fourthlayer
             new Floor('sprites/3. Background/Layers/5. Water/D2.png', 540 * 5),
             new Floor('sprites/3. Background/Layers/5. Water/D1.png', 540 * 4),
-
+            //4.
+            new Floor('sprites/3. Background/Layers/5. Water/D2.png', 540 * 7),
+            new Floor('sprites/3. Background/Layers/5. Water/D1.png', 540 * 6),
+            //5.
+            new Floor('sprites/3. Background/Layers/5. Water/D2.png', 540 * 9),
+            new Floor('sprites/3. Background/Layers/5. Water/D1.png', 540 * 8),
             // third layer
             new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 540),
             new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 0),
@@ -37,7 +42,12 @@ function initLevel1() {
             // third floor
             new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 540 * 5),
             new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 540 * 4),
-
+            //4.
+            new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 540 * 7),
+            new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 540 * 6),
+            //5.
+            new Floor('sprites/3. Background/Layers/4.Fondo 2/D2.png', 540 * 9),
+            new Floor('sprites/3. Background/Layers/4.Fondo 2/D1.png', 540 * 8),
             // second layer
             new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 540),
             new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 0),
@@ -47,7 +57,12 @@ function initLevel1() {
             // third floor
             new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 540 * 5),
             new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 540 * 4),
-
+            //4.
+            new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 540 * 7),
+            new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 540 * 6),
+            //5.
+            new Floor('sprites/3. Background/Layers/3.Fondo 1/D2.png', 540 * 9),
+            new Floor('sprites/3. Background/Layers/3.Fondo 1/D1.png', 540 * 8),
             // first layer
             new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 540),
             new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 0),
@@ -56,9 +71,18 @@ function initLevel1() {
             new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 540 * 2),
             // thir floor
             new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 540 * 5),
-            new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 540 * 4)
+            new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 540 * 4),
+            //4.
+            new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 540 * 7),
+            new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 540 * 6),
+            //5.
+            new Floor('sprites/3. Background/Layers/2. Floor/D2.png', 540 * 9),
+            new Floor('sprites/3. Background/Layers/2. Floor/D1.png', 540 * 8)
         ],
         [
+            new Potion(),
+            new Potion(),
+            new Potion(),
             new Potion(),
             new Potion(),
             new Potion(),
@@ -75,5 +99,15 @@ function initLevel1() {
             new Coin(1300, 420),
             new Coin(1350, 450),
             new Coin(1400, 500),
+
+            new Coin(2100, 500),
+            new Coin(2150, 450),
+            new Coin(2200, 420),
+            new Coin(2250, 400),
+            new Coin(2300, 400),
+            new Coin(2350, 400),
+            new Coin(2400, 420),
+            new Coin(2450, 450),
+            new Coin(2500, 500),
         ])
 }

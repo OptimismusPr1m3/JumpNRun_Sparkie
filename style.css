@@ -117,7 +117,7 @@ canvas {
     display: none;
     justify-content: center;
     align-items: center;
-    gap: 330px;
+    gap: 390px;
 }
 
 .hud-element {
@@ -132,7 +132,7 @@ canvas {
 }
 
 .hud-element img {
-    height: 32px;
+    height: 48px;
 }
 
 .btns-row {
@@ -164,7 +164,7 @@ canvas {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 200;
+    z-index: 501;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -332,6 +332,14 @@ canvas {
         width: 100%;
     }
 
+    .hud-element button {
+        margin-top: -128px;
+    }
+
+    .hud-element img {
+        height: 60px;
+    }
+
     .btns-row {
         right: 44%;
     }
@@ -395,6 +403,18 @@ canvas {
 
     .btns-row {
         right: 43%;
+    }
+
+    .hud-movement {
+        gap: 360px;
+    }
+
+    .hud-element img {
+        height: 36px;
+    }
+
+    .hud-element button {
+        margin-top: -68px;
     }
 }
 
@@ -474,12 +494,21 @@ canvas {
     .fullscreen-btn {
         height: 32px;
     }
+
+    .hud-movement {
+        gap: 300px;
+    }
 }
 
 @media (max-width: 550px) {
     .btns-row {
         right: 33%;
     }
+
+    .hud-movement {
+        gap: 218px;
+    }
+
     .game-over {
         height: 50px;
     }
@@ -536,6 +565,14 @@ canvas {
     .row-instructions {
         justify-content: center;
         height: 124px;
+    }
+
+    .hud-movement {
+        gap: 190px;
+    }
+
+    .hud-element img {
+        height: 22px;
     }
 
     .instructions {
@@ -608,6 +645,9 @@ canvas {
     .instructions h3 {
         font-size: 16px;
         margin-top: 8px;
+    }
+    .hud-element button {
+        margin-top: -54px;
     }
 }
 
@@ -693,5 +733,13 @@ canvas {
         height: 132px;
         width: 129px;
         margin-top: -174px;
+    }
+
+    .hud-movement {
+        gap: 112px;
+    }
+
+    .hud-element img {
+        height: 16px;
     }
 }

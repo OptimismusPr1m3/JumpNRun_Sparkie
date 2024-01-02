@@ -69,13 +69,13 @@ class Endboss extends MovableObject {
      * Creates an instance of the Endboss - class, loads images for various states, sets initial position and speed, and starts animation.
      */
     constructor() {
-        super().loadImage(this.IMAGES_IDLING[0]);
+        super().loadImage(this.IMAGES_INTRODUCTION[0]);
         this.loadImages(this.IMAGES_IDLING);
         this.loadImages(this.IMAGES_INTRODUCTION);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_ATTACKING);
         this.loadImages(this.IMAGES_DEAD);
-        this.positionX = 1850;
+        this.positionX = 4200;
         this.speed = 2.5;
         this.animate();
     }
@@ -111,7 +111,7 @@ class Endboss extends MovableObject {
             this.playAnimation(this.IMAGES_IDLING)
         }
         this.contactCounter++;
-        if (world.character.positionX > 730 && !this.hadFirstContact) {
+        if (world.character.positionX > 3000 && !this.hadFirstContact) {
             this.contactCounter = 0;
             setTimeout(() => {
                 this.hadFirstContact = true;

@@ -56,7 +56,7 @@ function startGame() {
  * and adjusts the display style of the 'hudMovement' element accordingly.
  */
 function checkIfMobile() {
-    if (window.matchMedia('(orientation: landscape) and (max-width: 920px)').matches) {
+    if (window.matchMedia('(orientation: landscape) and (max-width: 920px)').matches || window.matchMedia('(max-width: 1024px)').matches) {
         document.getElementById('hudMovement').style = 'display: flex';
     } else {
         document.getElementById('hudMovement').style = 'display: none';
