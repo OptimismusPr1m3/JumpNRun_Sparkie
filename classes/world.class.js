@@ -100,7 +100,7 @@ class World {
      */
     run() {
         setInterval(() => {
-            this.checkCollisions();
+            //this.checkCollisions();
             
         }, 1000)
         setInterval(() => {
@@ -109,6 +109,7 @@ class World {
             this.checkCollectingPotions();
             this.checkCollectingCoins();
             this.checkIfAttackAnimationisCompleted();
+            this.checkCollisions();
         }, 150);
         setInterval(() => {
             this.clearAllIntervalls();
@@ -285,7 +286,7 @@ class World {
      */
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            if (this.character.isColliding(enemy) && !(this.character.isHurt())) {
                 enemy.isDamagingPlayer = true;
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.hp);
