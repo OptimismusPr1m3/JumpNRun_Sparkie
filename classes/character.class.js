@@ -9,7 +9,8 @@ class Character extends MovableObject {
     attackCounter = 0;
     meleeCounter = 0;
     world;
-
+    idleCounter = 0;
+    longIdleCounter = 0;
     IMAGES_IDLE = [
         'sprites/1.Sharkie/1.IDLE/1.png',
         'sprites/1.Sharkie/1.IDLE/2.png',
@@ -29,6 +30,30 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/1.IDLE/16.png',
         'sprites/1.Sharkie/1.IDLE/17.png',
         'sprites/1.Sharkie/1.IDLE/18.png'
+    ]
+    IMAGES_LONG_IDLE = [
+        'sprites/1.Sharkie/2.Long_IDLE/i1.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I2.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I3.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I4.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I5.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I6.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I8.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I9.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I10.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I11.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I12.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I13.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I14.png'
+    ]
+    IMAGES_LONG_IDLE_GREATER = [
+        'sprites/1.Sharkie/2.Long_IDLE/I8.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I9.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I10.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I11.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I12.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I13.png',
+        'sprites/1.Sharkie/2.Long_IDLE/I14.png'
     ]
     IMAGES_SWIMMING = [
         'sprites/1.Sharkie/3.Swim/1.png',
@@ -92,6 +117,8 @@ class Character extends MovableObject {
         super().loadImage('sprites/1.Sharkie/1.IDLE/1.png')
         this.speed = 7;
         this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_LONG_IDLE);
+        this.loadImages(this.IMAGES_LONG_IDLE_GREATER);
         this.loadImages(this.IMAGES_SWIMMING);
         this.loadImages(this.IMAGES_R_ATTACK);
         this.loadImages(this.IMAGES_M_ATTACK);
@@ -193,8 +220,19 @@ class Character extends MovableObject {
             this.playAnimation(this.IMAGES_SWIM_UP);
         } else if (this.world.keyboard.LEFT && !this.isHurt() && this.isAlive || this.world.keyboard.RIGHT && !this.isHurt() && this.isAlive) {
             this.playAnimation(this.IMAGES_SWIMMING);
+            this.idleCounter = 0;
+            this.longIdleCounter = 0;
         } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && this.isAlive && !this.isHurt() && !this.isThrowingBubble) {
             this.playAnimation(this.IMAGES_IDLE);
+            this.idleCounter++;
+            if (this.idleCounter > 30 && this.longIdleCounter < 14) {
+                this.playAnimation(this.IMAGES_LONG_IDLE)
+                this.longIdleCounter++;
+            }
+            if (this.longIdleCounter > 13) {
+                console.log('jop')
+                this.playAnimation(this.IMAGES_LONG_IDLE_GREATER);
+            }
         }
     }
 }
