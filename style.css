@@ -233,9 +233,14 @@ canvas {
 }
 
 @keyframes fadeInSection {
-    from{opacity: 0;}
-    to{opacity: 1;}
-    
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
 }
 
 .game-over-text-animation {
@@ -243,8 +248,13 @@ canvas {
 }
 
 @keyframes sizeIn {
-    from {height: 1px;}
-    to {height: 150px;}
+    from {
+        height: 1px;
+    }
+
+    to {
+        height: 150px;
+    }
 }
 
 .try-again-animation {
@@ -253,8 +263,15 @@ canvas {
 }
 
 @keyframes slideInLeft {
-    from {margin-right: 348px; opacity: 0;}
-    to {margin-right: 48px; opacity: 1;}
+    from {
+        margin-right: 348px;
+        opacity: 0;
+    }
+
+    to {
+        margin-right: 48px;
+        opacity: 1;
+    }
 }
 
 .menu-button-animation {
@@ -263,8 +280,15 @@ canvas {
 }
 
 @keyframes slideInRight {
-    from {margin-left: 348px; opacity: 0;}
-    to {margin-left: 48px; opacity: 1;}
+    from {
+        margin-left: 348px;
+        opacity: 0;
+    }
+
+    to {
+        margin-left: 48px;
+        opacity: 1;
+    }
 }
 
 @font-face {
@@ -376,18 +400,27 @@ canvas {
         margin-left: 18px;
         margin-right: 0;
     }
+
     .game-over {
         height: 80px;
     }
+
     .home-btn {
         height: 40px;
     }
+
     .restart-btn {
         height: 40px;
     }
+
     @keyframes sizeIn {
-        from {height: 1px;}
-        to {height: 80px;}
+        from {
+            height: 1px;
+        }
+
+        to {
+            height: 80px;
+        }
     }
 }
 
@@ -438,27 +471,34 @@ canvas {
     .heading {
         justify-content: center;
     }
+
     .instructions {
         width: 260px;
         height: 300px;
         margin-top: -400px;
     }
+
     .instructions-text {
         height: 24px;
     }
+
     .width-arrow-keyes {
         height: 60px;
         width: auto;
     }
+
     .next-btn-back-Btn {
         height: 32px;
     }
+
     .instructions h3 {
         font-size: 24px;
     }
+
     .width100 {
         width: 104px;
     }
+
     .d-key {
         height: 40px;
         margin-right: 38px;
@@ -471,26 +511,37 @@ canvas {
         right: 35%;
         top: 45%;
     }
+
     .instructions {
         margin-top: -345px;
     }
+
     .game-over {
         height: 60px;
     }
+
     .home-btn {
         height: 32px;
     }
+
     .restart-btn {
         height: 32px;
     }
+
     @keyframes sizeIn {
-        from {height: 1px;}
-        to {height: 60px;}
+        from {
+            height: 1px;
+        }
+
+        to {
+            height: 60px;
+        }
     }
+
     .info-btn {
         height: 24px;
     }
-    
+
     .fullscreen-btn {
         height: 32px;
     }
@@ -512,37 +563,52 @@ canvas {
     .game-over {
         height: 50px;
     }
+
     .home-btn {
         height: 28px;
     }
+
     .restart-btn {
         height: 28px;
     }
+
     @keyframes sizeIn {
-        from {height: 1px;}
-        to {height: 50px;}
+        from {
+            height: 1px;
+        }
+
+        to {
+            height: 50px;
+        }
     }
+
     .instructions {
         margin-top: -280px;
         width: 200px;
         height: 210px;
     }
+
     .width-arrow-keyes {
         height: 40px;
     }
+
     .instructions-text {
         height: 20px;
     }
+
     .instructions h3 {
         font-size: 20px;
     }
+
     .next-btn-back-Btn {
         height: 24px;
 
     }
+
     .width100 {
         width: 72px;
     }
+
     .d-key {
         height: 24px;
         margin-right: 28px;
@@ -558,7 +624,7 @@ canvas {
     .btns-row {
         right: 36%;
     }
-    
+
 }
 
 @media (max-width: 450px) {
@@ -598,30 +664,43 @@ canvas {
     h1 {
         font-size: 48px;
     }
+
     .game-over {
         height: 40px;
     }
+
     .home-btn {
         height: 24px;
     }
+
     .restart-btn {
         height: 24px;
     }
+
     @keyframes sizeIn {
-        from {height: 1px;}
-        to {height: 40px;}
+        from {
+            height: 1px;
+        }
+
+        to {
+            height: 40px;
+        }
     }
+
     .info-btn {
         height: 20px;
     }
+
     .fullscreen-btn {
         height: 26px;
     }
+
     .top-left-btns {
         margin-bottom: -36px;
         margin-right: 12px;
         z-index: 200;
     }
+
     .btns-row {
         z-index: 400;
         top: 45%;
@@ -634,18 +713,22 @@ canvas {
         height: 160px;
         margin-top: -214px;
     }
+
     .instructions-text {
         margin-left: 6px;
         height: 14px;
     }
+
     .next-btn-back-Btn {
         height: 18px;
         margin: 12px;
     }
+
     .instructions h3 {
         font-size: 16px;
         margin-top: 8px;
     }
+
     .hud-element button {
         margin-top: -54px;
     }
@@ -655,15 +738,19 @@ canvas {
     .btns-row {
         right: 34%;
     }
+
     .instructions {
         margin-top: -180px;
     }
+
     .info-btn {
         height: 18px;
     }
+
     .fullscreen-btn {
         height: 22px;
     }
+
     .top-left-btns {
         margin-bottom: -30px;
     }
@@ -674,7 +761,7 @@ canvas {
         width: 100%;
         height: 100vh;
     }
-    
+
 }
 
 @media (max-width: 950px) and (max-height: 500px) {
@@ -682,9 +769,11 @@ canvas {
         width: 100%;
         height: 100vh;
     }
+
     .instructions {
         margin-top: -330px;
     }
+
     .heading {
         display: none;
     }
@@ -696,6 +785,7 @@ canvas {
         height: 320px;
         margin-top: -350px;
     }
+
     .btns-row {
         right: 41%;
     }
@@ -716,19 +806,29 @@ canvas {
     .heading {
         margin-top: -150px;
     }
+
     .game-over {
         height: 30px;
     }
+
     .home-btn {
         height: 18px;
     }
+
     .restart-btn {
         height: 18px;
     }
+
     @keyframes sizeIn {
-        from {height: 1px;}
-        to {height: 30px;}
+        from {
+            height: 1px;
+        }
+
+        to {
+            height: 30px;
+        }
     }
+
     .instructions {
         height: 132px;
         width: 129px;
@@ -741,5 +841,57 @@ canvas {
 
     .hud-element img {
         height: 16px;
+    }
+}
+
+
+/*Please Rotate Your Device*/
+
+.rotate-device {
+    background-color: black;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone {
+    height: 50px;
+    width: 100px;
+    border: 3px solid white;
+    border-radius: 10px;
+    animation: rotate 2.5s ease-in-out infinite alternate;
+
+}
+
+.message {
+    color: white;
+    font-size: 1em;
+    margin-top: 40px;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(-90deg)
+    }
+
+    100% {
+        transform: rotate(-90deg)
+    }
+}
+
+@media (max-width: 812px) and (orientation: portrait) {
+    .rotate-device {
+        display: flex;
     }
 }
