@@ -66,8 +66,9 @@
         <div class="top-left-btns">
             <img onclick="toggleInstructions()" class="info-btn" src="sprites/6.Botones/Try again/info.png"
                 alt="Instructions">
-            <img onclick="toggleFullscreen()" class="fullscreen-btn"
-                src="sprites/6.Botones/Try again/fullscreen.png" alt="Fullscreen">
+            <img onclick="toggleAudio()" class="mute-switch" src="sprites/6.Botones/Try again/mute.png" alt="MuteSwitch">
+            <img id="fullScreenButton" onclick="toggleFullscreen()" class="fullscreen-btn" src="sprites/6.Botones/Try again/fullscreen.png"
+                alt="Fullscreen">
         </div>
         <canvas id="GameCanvas" width="1080" height="720"></canvas>
         <div id="hudMovement" class="hud-movement">
@@ -102,8 +103,10 @@
                 <img class="instructions-text" src="sprites/6.Botones/Tittles/bubble shot tittle.png" alt="">
             </div>
             <div class="next-back-btn">
-                <img id="backButton" onclick="toggleInstructionPages('back')" class="next-btn-back-Btn d-none" src="sprites/6.Botones/Key/back.png" alt="Previous Page">
-                <img id="nextButton" onclick="toggleInstructionPages('next')" class="next-btn-back-Btn" src="sprites/6.Botones/Key/next.png" alt="Next Page">
+                <img id="backButton" onclick="toggleInstructionPages('back')" class="next-btn-back-Btn d-none"
+                    src="sprites/6.Botones/Key/back.png" alt="Previous Page">
+                <img id="nextButton" onclick="toggleInstructionPages('next')" class="next-btn-back-Btn"
+                    src="sprites/6.Botones/Key/next.png" alt="Next Page">
             </div>
         </div>
 

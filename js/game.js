@@ -1,6 +1,6 @@
 let canvas;
-let world;
 let startScreen;
+let world;
 let keyboard = new KeyBoard();
 
 /**
@@ -35,9 +35,13 @@ function setUpStartScreen(canvas) {
  * Once the flag is true, indicating that the start screen drawing is stopped, the interval is cleared, and the `init` function is called to initialize the game.
  */
 const intervallId = setInterval(() => {
-    if (startScreen.stopDrawing) {
-        clearInterval(intervallId)
-        init();
+    try {
+        if (startScreen.stopDrawing) {
+            clearInterval(intervallId);
+            init();
+        }
+    } catch (error) {
+        //console.warn("Expected Error", error);
     }
 }, 10);
 /**
@@ -58,6 +62,7 @@ function startGame() {
 function checkIfMobile() {
     if (window.matchMedia('(orientation: landscape) and (max-width: 920px)').matches || window.matchMedia('(max-width: 1024px)').matches) {
         document.getElementById('hudMovement').style = 'display: flex';
+        document.getElementById('fullScreenButton').style = 'display: none';
     } else {
         document.getElementById('hudMovement').style = 'display: none';
     }
@@ -108,4 +113,14 @@ function toggleInstructionPages(backOrNext) {
  */
 function toggleFullscreen() {
     canvas.requestFullscreen();
+}
+
+function toggleAudio() {
+    if (!world.isMuted) {
+        world.background_music.pause()
+        world.isMuted = true;
+    } else {
+        world.background_music.play();
+        world.isMuted = false;
+    }
 }

@@ -213,6 +213,11 @@ canvas {
     height: 32px;
 }
 
+.mute-switch {
+    height: 42px;
+    margin-left: 18px;
+}
+
 .fullscreen-btn {
     height: 42px;
     margin-left: 16px;

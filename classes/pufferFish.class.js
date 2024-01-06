@@ -52,7 +52,6 @@ class PufferFish extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
         this.speed = 0.15 + Math.random() * 0.4;
-        //this.swimming_sound = new Audio('audio/p_fish_swimming.mp3');
     }
     /**
      * Initiates animation loops for left movement, aggression checks, and deadly hurt checks.

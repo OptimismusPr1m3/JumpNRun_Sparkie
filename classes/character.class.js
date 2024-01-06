@@ -198,11 +198,9 @@ class Character extends MovableObject {
         if (this.world.keyboard.RIGHT && this.positionX < this.world.level.level_end_x && this.isAlive) {
             this.otherDirection = false;
             this.moveRight();
-            this.swimming_sound.play();
         } else if (this.world.keyboard.LEFT && this.positionX > 0 && this.isAlive) {
             this.otherDirection = true;
             this.moveLeft();
-            this.swimming_sound.play();
         }
         if (this.world.keyboard.UP && !this.isJumping && this.isAlive) {
             this.jump();

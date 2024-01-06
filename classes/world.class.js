@@ -8,6 +8,8 @@ class World {
     keyboard;
     intervallIDs = [];
     camera_x = 0;
+    isMuted = false;
+    background_music = new Audio('audio/background_music.mp3');
     statusBar = new HealthBar(10, 45);
     poisonBar = new PoisonBar(5, -5);
     coinBar = new CoinBar(10, 100);
@@ -28,6 +30,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.background_music.play();
     }
     /**
      * Gives the character class object the entire world object in a variable world
