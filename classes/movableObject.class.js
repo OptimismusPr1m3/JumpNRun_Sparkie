@@ -23,7 +23,7 @@ class MovableObject extends DrawableObject {
 
     // Hitbox calculation offsets
     offsetRight = 40;
-    offsetLeft = 20;
+    offsetLeft = 5;
     offsetBottom = 5;
     offsetTop = 50;
 
@@ -88,7 +88,7 @@ class MovableObject extends DrawableObject {
      * Handles the collection of coins, incrementing the character's coin count.
      */
     isCollectingCoins(){
-        this.amountOfC += 5;
+        this.amountOfC += 5.6;
         if (this.amountOfC > 100) {
             this.amountOfC = 100
         }

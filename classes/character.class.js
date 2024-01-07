@@ -156,6 +156,8 @@ class Character extends MovableObject {
                 this.spawnBubble = true;
                 this.attackCounter = 0;
             }
+            this.idleCounter = 0;
+            this.longIdleCounter = 0;
         }
     }
     /**
@@ -171,6 +173,8 @@ class Character extends MovableObject {
                 this.hasSlapped = true;
                 this.meleeCounter = 0;
             }
+            this.idleCounter = 0;
+            this.longIdleCounter = 0;
         }
     }
     /**
@@ -214,8 +218,12 @@ class Character extends MovableObject {
     playMovementAnimations() {
         if (this.isHurt() && this.isAlive) {
             this.playAnimation(this.IMAGES_HURT)
+            this.idleCounter = 0;
+            this.longIdleCounter = 0;
         } else if (this.positionY < 390 && this.isAlive) {
             this.playAnimation(this.IMAGES_SWIM_UP);
+            this.idleCounter = 0;
+            this.longIdleCounter = 0;
         } else if (this.world.keyboard.LEFT && !this.isHurt() && this.isAlive || this.world.keyboard.RIGHT && !this.isHurt() && this.isAlive) {
             this.playAnimation(this.IMAGES_SWIMMING);
             this.idleCounter = 0;
@@ -228,7 +236,6 @@ class Character extends MovableObject {
                 this.longIdleCounter++;
             }
             if (this.longIdleCounter > 13) {
-                console.log('jop')
                 this.playAnimation(this.IMAGES_LONG_IDLE_GREATER);
             }
         }

@@ -1,6 +1,6 @@
 
 class World {
-    
+
     character = new Character();
     level = level1;
     canvas;
@@ -53,6 +53,8 @@ class World {
             for (let i = 0; i < 999; i++) {
                 window.clearInterval(i);
             }
+            this.background_music.pause();
+            this.background_music.currentTime = 0;
             this.setGameOverScreen();
         }
     }
@@ -70,6 +72,8 @@ class World {
                     for (let i = 0; i < 999; i++) {
                         window.clearInterval(i);
                     }
+                    this.background_music.pause();
+                    this.background_music.currentTime = 0;
                     this.setYouWinScreen();
                 }
             }
@@ -104,7 +108,7 @@ class World {
     run() {
         setInterval(() => {
             //this.checkCollisions();
-            
+
         }, 1000)
         setInterval(() => {
             this.checkIfMeleeAttack();
@@ -128,18 +132,18 @@ class World {
      * Checks the player's position relative to specific objects (e.g., Endboss) and updates their relative position states.
      */
     checkPlayerPosition() {
-        this.level.enemies.forEach((enemy) =>{
+        this.level.enemies.forEach((enemy) => {
             if (enemy instanceof Endboss) {
                 this.calculateDistance(enemy);
             }
-        }); 
+        });
     }
     /**
      * Calculates the distance between the player and a given object, updating the object's relative position state.
      * 
      * @param {GameObject} obj - The object for which the distance is to be calculated.
      */
-    calculateDistance (obj) {
+    calculateDistance(obj) {
         let distance = this.character.positionX - obj.positionX;
         if (distance < 0 && obj.hadFirstContact) {
             obj.isBeforePlayer = true;
@@ -180,7 +184,7 @@ class World {
                 if (distance > -300 && this.character.hasSlapped) {
                     this.character.hasSlapped = false;
                     enemy.isDeadlyHurt = true;
-                }else {
+                } else {
                     setTimeout(() => {
                         this.character.hasSlapped = false;
                     }, 100);
