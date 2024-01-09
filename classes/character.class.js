@@ -8,6 +8,7 @@ class Character extends MovableObject {
     deadCounter = 0;
     attackCounter = 0;
     meleeCounter = 0;
+    whiteBubbleCounter = 0;
     world;
     idleCounter = 0;
     longIdleCounter = 0;
@@ -63,7 +64,7 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/3.Swim/5.png',
         'sprites/1.Sharkie/3.Swim/6.png',
     ]
-    IMAGES_R_ATTACK = [
+    IMAGES_R_GREEN_ATTACK = [
         'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png',
         'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png',
         'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png',
@@ -72,6 +73,16 @@ class Character extends MovableObject {
         'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
         'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
         'sprites/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png'
+    ]
+    IMAGES_R_WHITE_ATTACK = [
+        'sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
+        'sprites/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png',
     ]
     IMAGES_M_ATTACK = [
         'sprites/1.Sharkie/4.Attack/Fin slap/1.png',
@@ -120,7 +131,8 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_LONG_IDLE);
         this.loadImages(this.IMAGES_LONG_IDLE_GREATER);
         this.loadImages(this.IMAGES_SWIMMING);
-        this.loadImages(this.IMAGES_R_ATTACK);
+        this.loadImages(this.IMAGES_R_GREEN_ATTACK);
+        this.loadImages(this.IMAGES_R_WHITE_ATTACK);
         this.loadImages(this.IMAGES_M_ATTACK);
         this.loadImages(this.IMAGES_SWIM_UP);
         this.loadImages(this.IMAGES_HURT);
@@ -142,6 +154,7 @@ class Character extends MovableObject {
         }, 180);
         setInterval(() => {
             this.checkAttackAnimationAndThrowBubble();
+            this.checkWhiteBubbleAttackAndThrowBubble();
         }, 1000 / 10);
     }
     /**
@@ -149,12 +162,25 @@ class Character extends MovableObject {
      * Plays the attack animation and initiates the bubble throwing action when Sharkie is in the attack state.
      */
     checkAttackAnimationAndThrowBubble() {
-        if (this.isThrowingBubble && this.attackCounter < 8) {
-            this.playAnimation(this.IMAGES_R_ATTACK);
+        if (this.isThrowingGreenBubble && this.attackCounter < 8) {
+            this.playAnimation(this.IMAGES_R_GREEN_ATTACK);
             this.attackCounter++;
             if (this.attackCounter == 8) {
-                this.spawnBubble = true;
+                this.spawnGreenBubble = true;
                 this.attackCounter = 0;
+            }
+            this.idleCounter = 0;
+            this.longIdleCounter = 0;
+        }
+    }
+    
+    checkWhiteBubbleAttackAndThrowBubble() {
+        if (this.isThrowingWhiteBubble && this.whiteBubbleCounter < 8) {
+            this.playAnimation(this.IMAGES_R_WHITE_ATTACK);
+            this.whiteBubbleCounter++;
+            if (this.whiteBubbleCounter == 8) {
+                this.spawnWhiteBubble = true;
+                this.whiteBubbleCounter = 0;
             }
             this.idleCounter = 0;
             this.longIdleCounter = 0;
@@ -228,7 +254,7 @@ class Character extends MovableObject {
             this.playAnimation(this.IMAGES_SWIMMING);
             this.idleCounter = 0;
             this.longIdleCounter = 0;
-        } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && this.isAlive && !this.isHurt() && !this.isThrowingBubble) {
+        } else if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && this.isAlive && !this.isHurt() && !this.isThrowingGreenBubble && !this.isThrowingWhiteBubble) {
             this.playAnimation(this.IMAGES_IDLE);
             this.idleCounter++;
             if (this.idleCounter > 30 && this.longIdleCounter < 14) {

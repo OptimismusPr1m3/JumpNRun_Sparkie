@@ -6,6 +6,8 @@ class World {
     canvas;
     ctx;
     keyboard;
+    greenBubble = 'sprites/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png';
+    whiteBubble = 'sprites/1.Sharkie/4.Attack/Bubble trap/Bubble.png';
     intervallIDs = [];
     camera_x = 0;
     isMuted = false;
@@ -113,9 +115,11 @@ class World {
         setInterval(() => {
             this.checkIfMeleeAttack();
             this.checkThrownObjects();
+            this.checkWhiteBubbleThrown();
             this.checkCollectingPotions();
             this.checkCollectingCoins();
-            this.checkIfAttackAnimationisCompleted();
+            this.checkIfGreenAttackAnimationisCompleted();
+            this.checkIfWhiteAttackAnimationIsCompleted();
             this.checkCollisions();
         }, 150);
         setInterval(() => {
@@ -157,8 +161,13 @@ class World {
      * Checks if the player initiates throwing objects, updates player's throwing state.
      */
     checkThrownObjects() {
-        if (!this.character.isThrowingBubble && this.keyboard.SPACE && this.character.amountOfP !== 0) {
-            this.character.isThrowingBubble = true;
+        if (!this.character.isThrowingGreenBubble && this.keyboard.SPACE && this.character.amountOfP !== 0) {
+            this.character.isThrowingGreenBubble = true;
+        }
+    }
+    checkWhiteBubbleThrown() {
+        if (!this.character.isThrowingWhiteBubble && this.keyboard.WBUBBLE) {
+            this.character.isThrowingWhiteBubble = true;
         }
     }
     /**
@@ -196,18 +205,27 @@ class World {
      * Checks if the attack animation is completed, spawns a throwable object, updates player states, and manages poison bar.
      * 
      * @description
-     * This method checks if the player's `spawnBubble` property is true, indicating that the attack animation is completed.
+     * This method checks if the player's `spawnGreenBubble` property is true, indicating that the attack animation is completed.
      * If true, it creates a new `ThrowableObject` at a specific position, adds it to the `throwableObejcts` array,
      * calls the player's `isThrowing` method, updates the poison bar based on the player's collected potions, and resets certain player properties.
      */
-    checkIfAttackAnimationisCompleted() {
-        if (this.character.spawnBubble) {
-            let bubble = new ThrowableObject(this.character.positionX + 150, this.character.positionY + 150);
+    checkIfGreenAttackAnimationisCompleted() {
+        if (this.character.spawnGreenBubble) {
+            let bubble = new ThrowableObject(this.character.positionX + 150, this.character.positionY + 150, this.greenBubble, false);
             this.throwableObejcts.push(bubble);
             this.character.isThrowing();
             this.poisonBar.setPercentage(this.character.amountOfP)
-            this.character.spawnBubble = false;
-            this.character.isThrowingBubble = false;
+            this.character.spawnGreenBubble = false;
+            this.character.isThrowingGreenBubble = false;
+        }
+    }
+
+    checkIfWhiteAttackAnimationIsCompleted() {
+        if (this.character.spawnWhiteBubble) {
+            let bubble = new ThrowableObject(this.character.positionX + 150, this.character.positionY + 150, this.whiteBubble, true);
+            this.throwableObejcts.push(bubble);
+            this.character.spawnWhiteBubble = false;
+            this.character.isThrowingWhiteBubble = false;
         }
     }
     /**
@@ -223,7 +241,13 @@ class World {
             const enemy = this.level.enemies[i];
             for (let j = 0; j < this.throwableObejcts.length; j++) {
                 const bubble = this.throwableObejcts[j];
-                if (bubble.isThrowableColliding(enemy)) {
+                if (bubble.isThrowableColliding(enemy) && !bubble.isWhite ) {
+                    enemy.hit();
+                    if (enemy.hp == 0) {
+                        enemy.isDeadlyHurt = true;
+                    }
+                    this.throwableObejcts.splice(j, 1);
+                } else if (enemy instanceof Jellyfish && bubble.isThrowableColliding(enemy)) {
                     enemy.hit();
                     if (enemy.hp == 0) {
                         enemy.isDeadlyHurt = true;

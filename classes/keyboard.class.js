@@ -6,6 +6,7 @@ class KeyBoard {
     DOWN = false;
     SPACE = false;
     MELEE = false;
+    WBUBBLE = false;
 
     /**
      * Creates an instance of the KeyBoard - class and initializes desktop button handling.
@@ -38,6 +39,8 @@ class KeyBoard {
                 case 'f': this.MELEE = true;
                     break;
                 case ' ': this.SPACE = true;
+                    break;
+                case 'g': this.WBUBBLE = true;
                 default:
                     break;
             }
@@ -59,6 +62,8 @@ class KeyBoard {
                 case 'f': this.MELEE = false;
                     break;
                 case ' ': this.SPACE = false;
+                    break;
+                case 'g': this.WBUBBLE = false;
                 default:
                     break;
             }
@@ -113,5 +118,14 @@ class KeyBoard {
             event.preventDefault();
             this.MELEE = false;
         })
+        /*
+        document.getElementById('wBubbleBtn').addEventListener("touchstart", (event) => {
+            event.preventDefault();
+            this.WBUBBLE = true;
+        })
+        document.getElementById('wBubbleBtn').addEventListener("touchend", (event) => {
+            event.preventDefault();
+            this.WBUBBLE = false;
+        })*/
     }
 }

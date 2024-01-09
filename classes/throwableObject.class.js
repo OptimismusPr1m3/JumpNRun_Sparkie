@@ -2,10 +2,12 @@ class ThrowableObject extends MovableObject {
     height = 40;
     width = 40;
     speedX = 0;
-    constructor(posX, posY) {
-        super().loadImage('sprites/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png');
+    isWhite;
+    constructor(posX, posY, bubbleColorPath, poisonOrNot) {
+        super().loadImage(bubbleColorPath);
         this.positionX = posX;
         this.positionY = posY;
+        this.isWhite = poisonOrNot;
         this.throw()
     }
 

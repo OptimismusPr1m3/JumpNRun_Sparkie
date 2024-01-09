@@ -16,8 +16,10 @@ class MovableObject extends DrawableObject {
     isDamagingPlayer = false;
     isAttacking = false;
     isGameOver = false;
-    isThrowingBubble = false;
-    spawnBubble = false;
+    isThrowingGreenBubble = false;
+    isThrowingWhiteBubble = false;
+    spawnGreenBubble = false;
+    spawnWhiteBubble = false;
     isKilled = false;
     isDeadlyHurt = false;
 

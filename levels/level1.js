@@ -12,6 +12,7 @@ function initLevel1() {
         new PufferFish(),
         new PufferFish(),
         new PufferFish(),
+        new Jellyfish(),
         new Endboss()
     ],
         [
