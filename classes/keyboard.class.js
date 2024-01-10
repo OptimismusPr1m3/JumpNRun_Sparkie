@@ -118,7 +118,6 @@ class KeyBoard {
             event.preventDefault();
             this.MELEE = false;
         })
-        /*
         document.getElementById('wBubbleBtn').addEventListener("touchstart", (event) => {
             event.preventDefault();
             this.WBUBBLE = true;
@@ -126,6 +125,6 @@ class KeyBoard {
         document.getElementById('wBubbleBtn').addEventListener("touchend", (event) => {
             event.preventDefault();
             this.WBUBBLE = false;
-        })*/
+        })
     }
 }

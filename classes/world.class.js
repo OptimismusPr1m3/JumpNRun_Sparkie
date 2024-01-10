@@ -109,10 +109,6 @@ class World {
      */
     run() {
         setInterval(() => {
-            //this.checkCollisions();
-
-        }, 1000)
-        setInterval(() => {
             this.checkIfMeleeAttack();
             this.checkThrownObjects();
             this.checkWhiteBubbleThrown();
@@ -241,20 +237,41 @@ class World {
             const enemy = this.level.enemies[i];
             for (let j = 0; j < this.throwableObejcts.length; j++) {
                 const bubble = this.throwableObejcts[j];
-                if (bubble.isThrowableColliding(enemy) && !bubble.isWhite ) {
-                    enemy.hit();
-                    if (enemy.hp == 0) {
-                        enemy.isDeadlyHurt = true;
-                    }
-                    this.throwableObejcts.splice(j, 1);
-                } else if (enemy instanceof Jellyfish && bubble.isThrowableColliding(enemy)) {
-                    enemy.hit();
-                    if (enemy.hp == 0) {
-                        enemy.isDeadlyHurt = true;
-                    }
-                    this.throwableObejcts.splice(j, 1);
-                }
+                this.checkIfBubbleGreenHits(bubble, enemy, j);
+                this.checkIfBubbleWhiteHits(bubble, enemy, j);
+            } 
+        }
+    }
+    /**
+     * Checks if a throwable bubble hits a white jellyfish enemy and performs necessary actions.
+     *
+     * @param {Bubble} bubble - The throwable bubble object.
+     * @param {Jellyfish} enemy - The enemy object, expected to be an instance of Jellyfish.
+     * @param {number} j - The index of the throwable bubble in the throwableObjects array.
+     */
+    checkIfBubbleWhiteHits(bubble, enemy, j) {
+        if (enemy instanceof Jellyfish && bubble.isThrowableColliding(enemy)) {
+            enemy.hit();
+            if (enemy.hp == 0) {
+                enemy.isDeadlyHurt = true;
             }
+            this.throwableObejcts.splice(j, 1);
+        }
+    }
+    /**
+     * Checks if a green throwable bubble hits an enemy and performs necessary actions.
+     *
+     * @param {Bubble} bubble - The green throwable bubble object.
+     * @param {Enemy} enemy - The enemy object.
+     * @param {number} j - The index of the throwable bubble in the throwableObjects array.
+     */
+    checkIfBubbleGreenHits(bubble, enemy, j) {
+        if (bubble.isThrowableColliding(enemy) && !bubble.isWhite) {
+            enemy.hit();
+            if (enemy.hp == 0) {
+                enemy.isDeadlyHurt = true;
+            }
+            this.throwableObejcts.splice(j, 1);
         }
     }
     /**

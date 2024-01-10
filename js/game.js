@@ -96,12 +96,14 @@ function toggleInstructions() {
 function toggleInstructionPages(backOrNext) {
     if (backOrNext === 'next') {
         document.getElementById('firstInstruction').classList.add('d-none');
+        document.getElementById('fourthInstruction').classList.add('d-none');
         document.getElementById('secondInstruction').classList.remove('d-none');
         document.getElementById('thirdInstruction').classList.remove('d-none');
         document.getElementById('backButton').classList.remove('d-none');
         document.getElementById('nextButton').classList.add('d-none');
     } else if (backOrNext === 'back') {
         document.getElementById('firstInstruction').classList.remove('d-none');
+        document.getElementById('fourthInstruction').classList.remove('d-none');
         document.getElementById('secondInstruction').classList.add('d-none');
         document.getElementById('thirdInstruction').classList.add('d-none');
         document.getElementById('backButton').classList.add('d-none');
